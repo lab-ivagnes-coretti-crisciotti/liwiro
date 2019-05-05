@@ -1,0 +1,2 @@
+class Worksheet < ApplicationRecord
+end

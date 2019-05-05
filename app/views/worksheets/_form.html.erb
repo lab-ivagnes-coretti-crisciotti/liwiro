@@ -1,0 +1,22 @@
+<%= form_with(model: worksheet, local: true) do |form| %>
+  <% if worksheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(worksheet.errors.count, "error") %> prohibited this worksheet from being saved:</h2>
+
+      <ul>
+      <% worksheet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_field :comments %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
