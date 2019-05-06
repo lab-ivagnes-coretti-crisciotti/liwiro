@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_05_173108) do
+ActiveRecord::Schema.define(version: 2019_05_06_103400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +32,39 @@ ActiveRecord::Schema.define(version: 2019_05_05_173108) do
     t.index ["reset_password_token"], name: "index_athletes_on_reset_password_token", unique: true
   end
 
+  create_table "athletes_coupons", force: :cascade do |t|
+    t.bigint "athlete_id"
+    t.bigint "coupon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_athletes_coupons_on_athlete_id"
+    t.index ["coupon_id"], name: "index_athletes_coupons_on_coupon_id"
+  end
+
+  create_table "athletes_courses", force: :cascade do |t|
+    t.bigint "athlete_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_athletes_courses_on_athlete_id"
+    t.index ["course_id"], name: "index_athletes_courses_on_course_id"
+  end
+
+  create_table "athletes_gyms", force: :cascade do |t|
+    t.bigint "athlete_id"
+    t.bigint "gym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_athletes_gyms_on_athlete_id"
+    t.index ["gym_id"], name: "index_athletes_gyms_on_gym_id"
+  end
+
   create_table "coupons", force: :cascade do |t|
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gym_id"
+    t.string "description"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -43,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_05_05_173108) do
     t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gym_id"
+    t.string "description"
   end
 
   create_table "gyms", force: :cascade do |t|
@@ -66,6 +97,14 @@ ActiveRecord::Schema.define(version: 2019_05_05_173108) do
     t.string "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "athlete_id"
+    t.integer "gym_id"
   end
 
+  add_foreign_key "athletes_coupons", "athletes"
+  add_foreign_key "athletes_coupons", "coupons"
+  add_foreign_key "athletes_courses", "athletes"
+  add_foreign_key "athletes_courses", "courses"
+  add_foreign_key "athletes_gyms", "athletes"
+  add_foreign_key "athletes_gyms", "gyms"
 end
