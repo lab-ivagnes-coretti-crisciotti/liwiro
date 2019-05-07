@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_103400) do
+ActiveRecord::Schema.define(version: 2019_05_07_154534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_103400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "surname"
+    t.string "lastname"
     t.integer "height"
     t.integer "weight"
     t.integer "age"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_103400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gym_id"
-    t.string "description"
+    t.text "description"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -73,7 +73,8 @@ ActiveRecord::Schema.define(version: 2019_05_06_103400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gym_id"
-    t.string "description"
+    t.text "description"
+    t.text "comments", default: [], array: true
   end
 
   create_table "gyms", force: :cascade do |t|
@@ -85,20 +86,23 @@ ActiveRecord::Schema.define(version: 2019_05_06_103400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "adress"
+    t.string "address"
     t.float "price"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.integer "likes"
+    t.text "comments", default: [], array: true
     t.index ["email"], name: "index_gyms_on_email", unique: true
     t.index ["reset_password_token"], name: "index_gyms_on_reset_password_token", unique: true
   end
 
   create_table "worksheets", force: :cascade do |t|
-    t.string "comments"
+    t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "athlete_id"
     t.integer "gym_id"
+    t.text "exercises", default: [], array: true
   end
 
   add_foreign_key "athletes_coupons", "athletes"
