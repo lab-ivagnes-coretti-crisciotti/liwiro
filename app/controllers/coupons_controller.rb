@@ -25,6 +25,7 @@ class CouponsController < ApplicationController
   # POST /coupons.json
   def create
     @coupon = Coupon.new(coupon_params)
+    @coupon.gym = current_gym
 
     respond_to do |format|
       if @coupon.save
@@ -69,6 +70,6 @@ class CouponsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
-      params.require(:coupon).permit(:code)
+      params.require(:coupon).permit(:code, :description)
     end
 end

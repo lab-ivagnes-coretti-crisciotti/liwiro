@@ -5,5 +5,15 @@
   <%= @coupon.code %>
 </p>
 
+<p>
+  <strong>gym:</strong>
+  <%= @coupon.gym %>
+</p>
+
+<p>
+  <strong>athletes:</strong>
+  <%= @coupon.athletes %>
+</p>
+
 <%= link_to 'Edit', edit_coupon_path(@coupon) %> |
 <%= link_to 'Back', coupons_path %>

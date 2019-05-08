@@ -25,6 +25,8 @@ class WorksheetsController < ApplicationController
   # POST /worksheets.json
   def create
     @worksheet = Worksheet.new(worksheet_params)
+    @worksheet.athlete = current_athlete
+    @worksheet.gym = Gym.first    ####################just for try
 
     respond_to do |format|
       if @worksheet.save
@@ -69,6 +71,6 @@ class WorksheetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def worksheet_params
-      params.require(:worksheet).permit(:comments)
+      params.require(:worksheet).permit(:comments, :exercises)
     end
 end
