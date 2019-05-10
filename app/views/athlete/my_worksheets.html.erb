@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Worksheets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comments</th>
+      <th>athlete</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% (@worksheets).each do |worksheet| %>
+      <tr>
+        <td><%= worksheet.comments %></td>
+        <td><%= worksheet.athlete %></td>
+        <td><%= link_to 'Show', worksheet %></td>
+        <td><%= link_to 'Edit', edit_worksheet_path(worksheet) %></td>
+        <td><%= link_to 'Destroy', worksheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worksheet', new_worksheet_path %>

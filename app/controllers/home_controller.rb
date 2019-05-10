@@ -5,5 +5,5 @@ class HomeController < ApplicationController
 
   def guest
   end
-  
+
 end

@@ -1,4 +1,5 @@
 class WorksheetsController < ApplicationController
+  before_action :authenticate_athlete!, except: [:edit, :update]
   before_action :set_worksheet, only: [:show, :edit, :update, :destroy]
 
   # GET /worksheets

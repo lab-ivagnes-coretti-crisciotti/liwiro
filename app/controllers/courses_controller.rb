@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_gym!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses

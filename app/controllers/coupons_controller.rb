@@ -1,4 +1,5 @@
 class CouponsController < ApplicationController
+  before_action :authenticate_gym!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
 
   # GET /coupons
