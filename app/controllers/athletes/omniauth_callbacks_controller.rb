@@ -5,8 +5,20 @@ class Athletes::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+   def all
+    athlete = Athlete.from_omniauth(request.env["omniauth.auth"])
+    if athlete.persisted? 
+      session[:athlete_id] = athlete.id
+      sign_in_and_redirect athlete, notice: "Signed in!"
+    else
+      # Devise allow us to save the attributes eventhough 
+      # we havent create the user account yet
+      session["devise.athlete_attributes"] = athlete.attributes
+      redirect_to new_athlete_registration_url
+    end
+  end  
+  alias_method :facebook, :all
+  alias_method :google_oauth2, :all
 
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
@@ -17,9 +29,9 @@ class Athletes::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
   # end
 
   # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def failure
+    redirect_to root_path   
+  end
 
   # protected
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :gyms, path: 'gyms', controllers: { sessions: "gyms/sessions"}
-  devise_for :athletes, path: 'athletes', controllers: { sessions: "athletes/sessions"}
+  devise_for :athletes, path: 'athletes', controllers: { sessions: "athletes/sessions", omniauth_callbacks: "athletes/omniauth_callbacks"}
 
   resources :worksheets
   resources :courses

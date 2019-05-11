@@ -261,6 +261,13 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  ### GOOGLE AUTH
+  config.omniauth :google_oauth2, '527433283163-64bkk577j7hf1lqnbjbetnlnpdk5hjfp.apps.googleusercontent.com',
+  'jpiwpF2KExMPrgzhbsKv8XtK', {redirect_uri: 'http://localhost:3000/athletes/auth/google_oauth2/callback'}
+  ### FACEBOOK AUTH
+  config.omniauth :facebook, '2474458045906535', 'dc0c7026b1d5633b1cc9d7daac8fce21', 
+  {redirect_uri: 'http://localhost:3000/'}
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
