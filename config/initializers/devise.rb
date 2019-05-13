@@ -266,7 +266,7 @@ Devise.setup do |config|
   'jpiwpF2KExMPrgzhbsKv8XtK', {redirect_uri: 'http://localhost:3000/athletes/auth/google_oauth2/callback'}
   ### FACEBOOK AUTH
   config.omniauth :facebook, '2474458045906535', 'dc0c7026b1d5633b1cc9d7daac8fce21', 
-  {redirect_uri: 'http://localhost:3000/'}
+  {redirect_uri: 'http://localhost:3000/athletes/auth/facebook/callback'}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

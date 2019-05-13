@@ -11,7 +11,8 @@ class Athlete < ApplicationRecord
          :omniauthable
 
   validates :name, presence: true
-  #validates :lastname, presence: true
+  validates :lastname, presence: true
+  validates :email, presence: true
 
   def self.from_omniauth(auth)
     athlete = Athlete.where(provider: auth.provider, uid: auth.uid).first
@@ -20,7 +21,7 @@ class Athlete < ApplicationRecord
     else
       # Check wether theres is already a user with the same 
       # email address
-      athlete_with_email = Athlete.find_by_email(auth.info.email)
+      athlete_with_email = Athlete.find_by_email(auth.extra.raw_info.email)
 
       if athlete_with_email.present?
         athlete = athlete_with_email
@@ -32,6 +33,7 @@ class Athlete < ApplicationRecord
           athlete.provider = auth.provider
           athlete.uid = auth.uid
           athlete.name = auth.info.name
+          athlete.lastname = auth.info.name
           athlete.email = auth.info.email
           athlete.password = Devise.friendly_token[0,20]
           athlete.save!
