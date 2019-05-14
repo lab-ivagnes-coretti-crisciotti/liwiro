@@ -1,1 +1,12 @@
 <h1><%= @gym.email %></h1>
+
+
+  <strong>comments:</strong>
+<tbody>
+  <% @gym.gym_reviews.each do |comment| %>
+    <tr>
+      <td><%= comment.text %></td>
+    </tr>
+  <% end %>
+</tbody>
+</br>

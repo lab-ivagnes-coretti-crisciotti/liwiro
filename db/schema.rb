@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_163741) do
+ActiveRecord::Schema.define(version: 2019_05_14_151622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 2019_05_11_163741) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "lastname"
+    t.string "username"
     t.integer "height"
     t.integer "weight"
     t.integer "age"
@@ -67,6 +66,17 @@ ActiveRecord::Schema.define(version: 2019_05_11_163741) do
     t.datetime "updated_at", null: false
     t.integer "gym_id"
     t.text "description"
+    t.string "name"
+  end
+
+  create_table "course_comments", force: :cascade do |t|
+    t.text "text"
+    t.bigint "athlete_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_course_comments_on_athlete_id"
+    t.index ["course_id"], name: "index_course_comments_on_course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -76,7 +86,16 @@ ActiveRecord::Schema.define(version: 2019_05_11_163741) do
     t.datetime "updated_at", null: false
     t.integer "gym_id"
     t.text "description"
-    t.text "comments", default: [], array: true
+  end
+
+  create_table "gym_reviews", force: :cascade do |t|
+    t.text "text"
+    t.bigint "athlete_id"
+    t.bigint "gym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_gym_reviews_on_athlete_id"
+    t.index ["gym_id"], name: "index_gym_reviews_on_gym_id"
   end
 
   create_table "gyms", force: :cascade do |t|
@@ -87,13 +106,12 @@ ActiveRecord::Schema.define(version: 2019_05_11_163741) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.string "username"
     t.string "address"
     t.float "price"
     t.decimal "latitude"
     t.decimal "longitude"
     t.integer "likes"
-    t.text "comments", default: [], array: true
     t.index ["email"], name: "index_gyms_on_email", unique: true
     t.index ["reset_password_token"], name: "index_gyms_on_reset_password_token", unique: true
   end
@@ -113,4 +131,8 @@ ActiveRecord::Schema.define(version: 2019_05_11_163741) do
   add_foreign_key "athletes_courses", "courses"
   add_foreign_key "athletes_gyms", "athletes"
   add_foreign_key "athletes_gyms", "gyms"
+  add_foreign_key "course_comments", "athletes"
+  add_foreign_key "course_comments", "courses"
+  add_foreign_key "gym_reviews", "athletes"
+  add_foreign_key "gym_reviews", "gyms"
 end

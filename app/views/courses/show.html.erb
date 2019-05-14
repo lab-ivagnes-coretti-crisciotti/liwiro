@@ -15,5 +15,16 @@
   <%= @course.likes %>
 </p>
 
+
+  <strong>comments:</strong>
+<tbody>
+  <% @course.course_comments.each do |comment| %>
+    <tr>
+      <td><%= comment.text %></td>
+    </tr>
+  <% end %>
+</tbody>
+</br>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

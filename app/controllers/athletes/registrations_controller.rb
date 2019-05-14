@@ -42,15 +42,15 @@ class Athletes::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up) do |athlete| 
-      athlete.permit(:email, :password, :password_confirmation, :name, :lastname)
+    devise_parameter_sanitizer.permit(:sign_up) do |athlete|
+      athlete.permit(:email, :password, :password_confirmation, :username)
     end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update) do |athlete| 
-      athlete.permit(:email, :password, :password_confirmation, :name, :lastname)
+    devise_parameter_sanitizer.permit(:account_update) do |athlete|
+      athlete.permit(:email, :password, :password_confirmation, :username)
     end
   end
 

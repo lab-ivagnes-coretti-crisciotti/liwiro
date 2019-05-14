@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @course_comment.text %>
+</p>
+
+<p>
+  <strong>Athlete:</strong>
+  <%= @course_comment.athlete %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @course_comment.course %>
+</p>
+
+<%= link_to 'Edit', edit_course_comment_path(@course_comment) %> |
+<%= link_to 'Back', course_comments_path %>

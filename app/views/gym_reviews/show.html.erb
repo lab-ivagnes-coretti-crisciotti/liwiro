@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @gym_review.text %>
+</p>
+
+<p>
+  <strong>Athlete:</strong>
+  <%= @gym_review.athlete %>
+</p>
+
+<p>
+  <strong>Gym:</strong>
+  <%= @gym_review.gym %>
+</p>
+
+<%= link_to 'Edit', edit_gym_review_path(@gym_review) %> |
+<%= link_to 'Back', gym_reviews_path %>
