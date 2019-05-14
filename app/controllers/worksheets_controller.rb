@@ -1,11 +1,12 @@
 class WorksheetsController < ApplicationController
   before_action :set_worksheet, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, except: [:index]
 
   # GET /worksheets
   # GET /worksheets.json
-  #def index
+  def index
     #@worksheets = Worksheet.all
-  #end
+  end
 
   # GET /worksheets/1
   # GET /worksheets/1.json
@@ -72,6 +73,16 @@ class WorksheetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def worksheet_params
       params.require(:worksheet).permit(:comments, :exercises)
+    end
+
+    def require_same_user
+      :authenticate_gym! || :authenticate_athlete!
+      @current_user = gym_signed_in? ? current_gym : current_athlete
+
+      if @current_user != @worksheet.gym && @current_user != @worksheet.athlete
+        flash[:dander] = "You can only access your own worksheets"
+        redirect_to root_path
+      end
     end
 
 end
