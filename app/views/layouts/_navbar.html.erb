@@ -1,0 +1,12 @@
+<%= link_to "HOME", root_path %> </br>
+<% if gym_signed_in? %>
+  u are now logged in as <%= current_gym %>, for logout
+  <%= link_to "logout", destroy_gym_session_path, method: :delete %>
+<% end %>
+
+<% if athlete_signed_in? %>
+  u are now logged in as <%= current_athlete %>, for logout
+  <%= link_to "logout", destroy_athlete_session_path, method: :delete %>
+<% end %>
+
+</br></br>

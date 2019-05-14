@@ -7,6 +7,10 @@ class AthleteController < ApplicationController
   def profile
   end
 
+  def my_gyms
+    @gyms = current_athlete.gyms
+  end
+
   def my_courses
     @courses = current_athlete.courses
   end

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Coupons</h1>
+<h1>my Coupons</h1>
 
 <table>
   <thead>
@@ -17,8 +17,7 @@
         <td><%= coupon.code %></td>
         <td><%= coupon.gym %></td>
         <td><%= link_to 'Show', coupon %></td>
-        <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
-        <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'delete', coupon %></td>
       </tr>
     <% end %>
   </tbody>

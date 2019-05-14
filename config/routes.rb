@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :worksheets
   resources :courses
   resources :coupons
+  resources :gyms
 
   root 'home#index'
   get '/guest', to: 'home#guest'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   #athlete routes
   get '/athlete/home', to: 'athlete#home'
   get '/athlete/profile', to: 'athlete#profile'
+  get '/athlete/my_gyms', to: 'athlete#my_gyms'
   get '/athlete/my_courses', to: 'athlete#my_courses'
   get '/athlete/my_coupons', to: 'athlete#my_coupons'
   get '/athlete/my_worksheets', to: 'athlete#my_worksheets'

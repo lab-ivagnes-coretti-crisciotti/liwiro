@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_gym!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_gym!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_same_gym, only: [:edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json
@@ -73,5 +74,12 @@ class CoursesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:name, :description, :likes, :comments)
+    end
+
+    def require_same_gym
+      if current_gym != @course.gym
+        flash[:dander] = "You can only access your own courses"
+        redirect_to root_path
+      end
     end
 end

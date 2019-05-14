@@ -1,12 +1,11 @@
 class WorksheetsController < ApplicationController
-  before_action :authenticate_athlete!, except: [:edit, :update]
   before_action :set_worksheet, only: [:show, :edit, :update, :destroy]
 
   # GET /worksheets
   # GET /worksheets.json
-  def index
-    @worksheets = Worksheet.all
-  end
+  #def index
+    #@worksheets = Worksheet.all
+  #end
 
   # GET /worksheets/1
   # GET /worksheets/1.json
@@ -74,4 +73,5 @@ class WorksheetsController < ApplicationController
     def worksheet_params
       params.require(:worksheet).permit(:comments, :exercises)
     end
+
 end

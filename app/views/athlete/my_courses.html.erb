@@ -1,9 +1,6 @@
-my courses
-
-
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
+<h1>my Courses</h1>
 
 <table>
   <thead>
@@ -22,8 +19,7 @@ my courses
         <td><%= course.gym %></td>
         <td><%= course.likes %></td>
         <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'leave', course %></td>
       </tr>
     <% end %>
   </tbody>

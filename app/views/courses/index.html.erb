@@ -19,8 +19,9 @@
         <td><%= course.gym %></td>
         <td><%= course.likes %></td>
         <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if athlete_signed_in? %>
+            <td><%= link_to "join" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

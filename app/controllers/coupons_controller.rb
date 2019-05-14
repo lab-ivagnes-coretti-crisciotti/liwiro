@@ -1,6 +1,7 @@
 class CouponsController < ApplicationController
-  before_action :authenticate_gym!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_gym!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_same_gym, only: [:edit, :update, :destroy]
 
   # GET /coupons
   # GET /coupons.json
@@ -72,5 +73,12 @@ class CouponsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
       params.require(:coupon).permit(:code, :description)
+    end
+
+    def require_same_gym
+      if current_gym != @coupon.gym
+        flash[:dander] = "You can only access your own coupons"
+        redirect_to root_path
+      end
     end
 end
