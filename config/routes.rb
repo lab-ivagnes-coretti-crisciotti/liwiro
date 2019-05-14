@@ -5,10 +5,23 @@ Rails.application.routes.draw do
   resources :gym_reviews
   resources :course_comments
   resources :worksheets
+  
+  #courses routes
   resources :courses
+  put '/courses/:id/join', to: 'courses#join', as: 'courses_join'
+  put '/courses/:id/leave', to: 'courses#leave', as: 'courses_leave'
+  
+  #coupons routes
   resources :coupons
+  put '/coupons/:id/join', to: 'coupons#join', as: 'coupons_join'
+  put '/coupons/:id/leave', to: 'coupons#leave', as: 'coupons_leave'
+  
+  #gyms routes
   resources :gyms
+  put '/gyms/:id/join', to: 'gyms#join', as: 'gyms_join'
+  put '/gyms/:id/leave', to: 'gyms#leave', as: 'gyms_leave'
 
+  #home and guest routes
   root 'home#index'
   get '/guest', to: 'home#guest'
 

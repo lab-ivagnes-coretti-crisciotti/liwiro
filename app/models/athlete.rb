@@ -22,7 +22,7 @@ class Athlete < ApplicationRecord
     else
       # Check wether theres is already a user with the same
       # email address
-      athlete_with_email = Athlete.find_by_email(auth.extra.raw_info.email)
+      athlete_with_email = Athlete.find_by_email(auth.info.email)
 
       if athlete_with_email.present?
         athlete = athlete_with_email
@@ -33,16 +33,14 @@ class Athlete < ApplicationRecord
         if auth.provider == "facebook"
           athlete.provider = auth.provider
           athlete.uid = auth.uid
-          athlete.name = auth.info.username
-          athlete.lastname = auth.info.name
+          athlete.username = auth.info.name
           athlete.email = auth.info.email
           athlete.password = Devise.friendly_token[0,20]
           athlete.save!
         elsif auth.provider == "google_oauth2"
           athlete.provider = auth.provider
           athlete.uid = auth.uid
-          athlete.name = auth.info.first_name
-          athlete.lastname = auth.info.last_name
+          athlete.username = auth.info.name
           athlete.email = auth.info.email
           athlete.password = Devise.friendly_token[0,20]
           athlete.save!

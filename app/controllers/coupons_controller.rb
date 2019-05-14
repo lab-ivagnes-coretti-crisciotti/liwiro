@@ -54,6 +54,36 @@ class CouponsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /coupons/:id/join
+  def join
+    @coupon = set_coupon
+    if !(@coupon.already_joined(@coupon,current_athlete))
+      current_athlete.coupons.push(@coupon)
+      respond_to do |format|
+        format.html { redirect_to @coupon, notice: 'Coupon was successfully joined.' }
+      end
+    else 
+      respond_to do |format|
+        format.html { redirect_to @coupon, notice: 'Coupon was already joined.' }
+      end
+    end  
+  end
+
+  # PATCH/PUT /coupons/:id/leave
+  def leave
+    @coupon = set_coupon
+    if (@coupon.already_joined(@coupon,current_athlete))
+      current_athlete.coupons.delete(@coupon)
+      respond_to do |format|
+        format.html { redirect_to @coupon, notice: 'Coupon was successfully leaved.' }
+      end
+    else 
+      respond_to do |format|
+        format.html { redirect_to @coupon, notice: 'Coupon was not already joined.' }
+      end
+    end  
+  end
+
   # DELETE /coupons/1
   # DELETE /coupons/1.json
   def destroy

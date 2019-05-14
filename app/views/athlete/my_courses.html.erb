@@ -19,7 +19,9 @@
         <td><%= course.gym %></td>
         <td><%= course.likes %></td>
         <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'leave', course %></td>
+        <% if athlete_signed_in? %>
+            <td><%= link_to "leave", courses_leave_path(:id => course.id), method: :put %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

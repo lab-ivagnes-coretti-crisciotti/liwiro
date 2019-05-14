@@ -11,4 +11,12 @@ class Gym < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, presence: true
+
+  def already_joined(gym, current_athlete)
+    @gym = Gym.where(id: gym.id).first
+    if current_athlete.gyms.include?(@gym)
+      true
+    else false 
+    end
+  end
 end

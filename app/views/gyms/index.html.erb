@@ -17,8 +17,11 @@
         <td><%= gym.email %></td>
         <td><%= gym.likes %></td>
         <td><%= link_to 'Show', gym %></td>
-        <% if athlete_signed_in? %>
-            <td><%= link_to "join" %></td>
+        <% if athlete_signed_in? && !(gym.already_joined(gym, current_athlete)) %>
+            <td><%= link_to "join", gyms_join_path(:id => gym.id), method: :put %></td>
+        <% end %>
+        <% if athlete_signed_in? && gym.already_joined(gym, current_athlete) %>
+            <td><%= link_to "leave", gyms_leave_path(:id => gym.id), method: :put %></td>
         <% end %>
       </tr>
     <% end %>

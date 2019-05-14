@@ -55,6 +55,36 @@ class CoursesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /courses/:id/join
+  def join
+    @course = set_course
+    if !(@course.already_joined(@course,current_athlete))
+      current_athlete.courses.push(@course)
+      respond_to do |format|
+        format.html { redirect_to @course, notice: 'Course was successfully joined.' }
+      end
+    else 
+      respond_to do |format|
+        format.html { redirect_to @course, notice: 'Course was already joined.' }
+      end
+    end  
+  end
+
+  # PATCH/PUT /courses/:id/leave
+  def leave
+    @course = set_course
+    if (@course.already_joined(@course,current_athlete))
+      current_athlete.courses.delete(@course)
+      respond_to do |format|
+        format.html { redirect_to @course, notice: 'Course was successfully leaved.' }
+      end
+    else 
+      respond_to do |format|
+        format.html { redirect_to @course, notice: 'Course was not already joined.' }
+      end
+    end  
+  end
+
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy

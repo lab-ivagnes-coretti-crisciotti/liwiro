@@ -17,7 +17,9 @@
         <td><%= gym.email %></td>
         <td><%= gym.likes %></td>
         <td><%= link_to 'Show', gym %></td>
-        <td><%= link_to 'Leave' %></td>
+        <% if athlete_signed_in? %>
+            <td><%= link_to "leave", gyms_leave_path(:id => gym.id), method: :put %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
