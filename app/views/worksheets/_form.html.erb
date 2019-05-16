@@ -13,7 +13,13 @@
 
   <div class="field">
     <%= form.label :comments %>
-    <%= form.text_field :comments %>
+    <%= form.text_field :comments %></br></br>
+      <%= form.label :exercise %>
+      <% [ 'ex1', 'ex2', 'ex3', 'ex4', 'ex5' ].each do |exercise| %>
+        <%= form.check_box :exercises, {}, exercise %>
+        <%= exercise.humanize %>
+      <% end %>
+    <%= form.hidden_field :gym_id, value: params[:gym] %>
   </div>
 
   <div class="actions">

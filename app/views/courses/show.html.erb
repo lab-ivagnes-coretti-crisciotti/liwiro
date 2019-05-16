@@ -26,5 +26,9 @@
 </tbody>
 </br>
 
+<% if athlete_signed_in? %>
+  <td><%= link_to "Take a Comment", new_course_comment_path(course: @course.id)%></td>
+<% end %></br></br>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

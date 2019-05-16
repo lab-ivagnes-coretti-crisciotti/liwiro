@@ -26,10 +26,10 @@ class GymReviewsController < ApplicationController
   # POST /gym_reviews
   # POST /gym_reviews.json
   def create
-    @gym_review = GymReview.new(gym_review_params)
+    @gym_review = GymReview.new
+    @gym_review.text = params[:gym_review][:text]
     @gym_review.athlete = current_athlete
-    @gym_review.gym = Gym.first ################ just for test
-
+    @gym_review.gym = Gym.where(id: params[:gym_review][:gym_id].to_i).first
 
     respond_to do |format|
       if @gym_review.save
@@ -74,7 +74,7 @@ class GymReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gym_review_params
-      params.require(:gym_review).permit(:text)
+      params.require(:gym_review).permit(:text, :gym_id)
     end
 
     def require_same_athlete

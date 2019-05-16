@@ -8,5 +8,10 @@
       <td><%= comment.text %></td>
     </tr>
   <% end %>
-</tbody>
-</br>
+</tbody></br></br>
+<% if athlete_signed_in? %>
+  <td><%= link_to "Vote", new_gym_review_path(gym: @gym.id)%></td>
+<% end %></br></br>
+<% if athlete_signed_in? %>
+  <td><%= link_to "Require Worksheet", new_worksheet_path(gym: @gym.id)%></td>
+<% end %></br>

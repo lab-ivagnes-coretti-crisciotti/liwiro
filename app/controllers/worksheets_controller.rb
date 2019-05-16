@@ -1,6 +1,8 @@
 class WorksheetsController < ApplicationController
   before_action :set_worksheet, only: [:show, :edit, :update, :destroy]
-  before_action :require_same_user, except: [:index]
+  before_action :require_same_user, except: [:index, :new, :create]
+  before_action :authenticate_athlete!, only: [:new, :crea, :destroy]
+  before_action :authenticate_gym!, only: [:edit, :update]
 
   # GET /worksheets
   # GET /worksheets.json
@@ -24,10 +26,11 @@ class WorksheetsController < ApplicationController
 
   # POST /worksheets
   # POST /worksheets.json
-  def create
-    @worksheet = Worksheet.new(worksheet_params)
+  def create  # TO FINISHHHHHHHHHHHHHHHHHHHHHHH
+    @worksheet = Worksheet.new
+    @worksheet.comments = params[:worksheet][:comments]
     @worksheet.athlete = current_athlete
-    @worksheet.gym = Gym.first    ####################just for try
+    @worksheet.gym = Gym.where(id: params[:worksheet][:gym_id].to_i).first
 
     respond_to do |format|
       if @worksheet.save
