@@ -26,9 +26,8 @@ class WorksheetsController < ApplicationController
 
   # POST /worksheets
   # POST /worksheets.json
-  def create  # TO FINISHHHHHHHHHHHHHHHHHHHHHHH
+  def create 
     @worksheet = Worksheet.new
-    @worksheet.comments = params[:worksheet][:comments]
     @worksheet.athlete = current_athlete
     @worksheet.gym = Gym.where(id: params[:worksheet][:gym_id].to_i).first
 
@@ -46,6 +45,17 @@ class WorksheetsController < ApplicationController
   # PATCH/PUT /worksheets/1
   # PATCH/PUT /worksheets/1.json
   def update
+    @worksheet.comments = params[:worksheet][:comments]
+    if params[:worksheet][:ex1] != "0" && !@worksheet.exercises.include?(params[:worksheet][:ex1])
+      @worksheet.exercises.push(params[:worksheet][:ex1])
+    end
+    if params[:worksheet][:ex1] != "0" && !@worksheet.exercises.include?(params[:worksheet][:ex2])
+      @worksheet.exercises.push(params[:worksheet][:ex2])
+    end
+    if params[:worksheet][:ex1] != "0" && !@worksheet.exercises.include?(params[:worksheet][:ex3])
+      @worksheet.exercises.push(params[:worksheet][:ex3])
+    end
+    #@worksheet.gym = current_gym
     respond_to do |format|
       if @worksheet.update(worksheet_params)
         format.html { redirect_to @worksheet, notice: 'Worksheet was successfully updated.' }
