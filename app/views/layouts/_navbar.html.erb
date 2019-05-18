@@ -1,12 +1,57 @@
-<%= link_to "HOME", root_path %> </br>
-<% if gym_signed_in? %>
-  u are now logged in as <%= current_gym %>, for logout
-  <%= link_to "logout", destroy_gym_session_path, method: :delete %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand"><%= image_tag("logo.png", :size =>"80x80" ) %></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav">
+  <li class="nav-item active">
+    <li class="nav-item"><a class="nav-link"><%= link_to "Home",   root_path %></a></li>
+
+    <li class="nav-item"><a class="nav-link"><%= link_to "Gyms", gyms_path %></a></li>
+    <li class="nav-item"><a class="nav-link"><%= link_to "Courses", courses_path %></a></li>
+    <li class="nav-item"><a class="nav-link"><%= link_to "Coupons", coupons_path %></a></li>
+  </li>
+</ul>
+</div>
+
+      <% if gym_signed_in? %>
+      <div class="d-flex">
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Gym: <%= current_gym %></button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+      <a class="dropdown-item" href="#"><%= link_to "Profile", gym_profile_path %></a>
+      <a class="dropdown-item" href="#"><%= link_to "My courses", gym_my_courses_path %></a>
+      <a class="dropdown-item" href="#"><%= link_to "My coupons", gym_my_coupons_path %></a>
+      <a class="dropdown-item" href="#"><%= link_to "My worksheets", gym_my_worksheets_path %></a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#"><%= link_to "Logout", destroy_gym_session_path, method: :delete %></a>
+    </div>
+  </div>
+</div>
 <% end %>
 
-<% if athlete_signed_in? %>
-  u are now logged in as <%= current_athlete %>, for logout
-  <%= link_to "logout", destroy_athlete_session_path, method: :delete %>
-<% end %>
+      <% if athlete_signed_in? %>
+      <div class="d-flex">
+    <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Athlete: <%= current_athlete %></button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+      <a class="dropdown-item" href="#"><%= link_to "Profile", athlete_profile_path %></a>
+      <a class="dropdown-item" href="#"><%= link_to "My gyms", athlete_my_gyms_path %></a>
+      <a class="dropdown-item" href="#"><%= link_to "My courses", athlete_my_courses_path %></a>
+      <a class="dropdown-item" href="#"><%= link_to "My coupons", athlete_my_coupons_path %></a>
+      <a class="dropdown-item" href="#"><%= link_to "My worksheets", athlete_my_worksheets_path %></a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#"><%= link_to "Logout", destroy_athlete_session_path, method: :delete %></a>
+    </div>
+    </div>
+    </div>
+      <% end %>
 
-</br></br>
+</nav>

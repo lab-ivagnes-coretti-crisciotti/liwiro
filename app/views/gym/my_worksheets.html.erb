@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="card" style="width: 18rem;">
+  <%= image_tag("course.png", :class => "card-img-top", :alt => "Card image cap") %>
+  <div class="card-body">
+    <h1>My Worksheets </h1><p class="card-text"></p>
+  </div>
+</div>
+</br>
+<hr>
+<h1 style="text-align:center;">worksheets ricevute</h1>
 
-<h1>Worksheets</h1>
-worksheets ricevute
-
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Comments</th>
-      <th>athlete</th>
-      <th>gym</th>
+      <th scope="col">Comments</th>
+      <th scope="col">athlete</th>
+      <th scope="col">gym</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,3 +31,5 @@ worksheets ricevute
 </table>
 
 <br>
+
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>New Worksheet</button>".html_safe, new_worksheet_path %>

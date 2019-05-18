@@ -12,10 +12,22 @@
   <body>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/messages' %>
+    <%= render 'layouts/modal' %>
+
     <div class="container">
       <%= yield %>
     </div>
 
     <%= debug(params) if Rails.env.development? %>
+    <%= render 'layouts/footer' %>
+
+    <style>
+      $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+$('.carousel').carousel()
+      </style>
+      
   </body>
 </html>
