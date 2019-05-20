@@ -1,4 +1,5 @@
 <% flash.each do |name, msg| %>
+<!--
 <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
   <div class="toast" style="position: absolute; top: 0; right: 0;">
     <div class="toast-header">
@@ -14,4 +15,8 @@
     </div>
   </div>
 </div>
+-->
+  <div class="alert alert-secondary" role="alert">
+    <%= image_tag("logo.png", :size =>"20x20" ) %> &nbsp; <%= msg %>
+  </div>
 <% end %>

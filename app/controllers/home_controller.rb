@@ -6,4 +6,7 @@ class HomeController < ApplicationController
   def guest
   end
 
+  def about
+  end
+
 end
