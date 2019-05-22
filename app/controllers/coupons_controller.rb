@@ -7,6 +7,7 @@ class CouponsController < ApplicationController
   # GET /coupons.json
   def index
     @coupons = Coupon.all
+    @gyms = Gym.all
   end
 
   # GET /coupons/1
@@ -62,11 +63,11 @@ class CouponsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @coupon, notice: 'Coupon was successfully joined.' }
       end
-    else 
+    else
       respond_to do |format|
         format.html { redirect_to @coupon, notice: 'Coupon was already joined.' }
       end
-    end  
+    end
   end
 
   # PATCH/PUT /coupons/:id/leave
@@ -77,11 +78,11 @@ class CouponsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @coupon, notice: 'Coupon was successfully leaved.' }
       end
-    else 
+    else
       respond_to do |format|
         format.html { redirect_to @coupon, notice: 'Coupon was not already joined.' }
       end
-    end  
+    end
   end
 
   # DELETE /coupons/1

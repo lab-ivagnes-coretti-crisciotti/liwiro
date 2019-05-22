@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   end
 
   def guest
+    @gyms = Gym.all
   end
 
   def about

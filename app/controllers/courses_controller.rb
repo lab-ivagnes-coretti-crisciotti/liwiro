@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @gyms = Gym.all
   end
 
   # GET /courses/1
@@ -63,11 +64,11 @@ class CoursesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @course, notice: 'Course was successfully joined.' }
       end
-    else 
+    else
       respond_to do |format|
         format.html { redirect_to @course, notice: 'Course was already joined.' }
       end
-    end  
+    end
   end
 
   # PATCH/PUT /courses/:id/leave
@@ -78,11 +79,11 @@ class CoursesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @course, notice: 'Course was successfully leaved.' }
       end
-    else 
+    else
       respond_to do |format|
         format.html { redirect_to @course, notice: 'Course was not already joined.' }
       end
-    end  
+    end
   end
 
   # DELETE /courses/1

@@ -7,12 +7,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- for maps -->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
 
-    <div class="container">
+    <div class="container" >
       <%= render 'layouts/messages' %>
       <%= render 'layouts/modal' %>
       <%= yield %>
@@ -23,11 +32,11 @@
 
     <style>
       $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
+        $('#myInput').trigger('focus')
+      })
 
-$('.carousel').carousel()
-      </style>
+      $('.carousel').carousel()
+    </style>
 
   </body>
 </html>

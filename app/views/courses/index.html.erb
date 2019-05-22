@@ -1,17 +1,17 @@
-<div class="card" style="width: 18rem;">
-  <%= image_tag("course.png", :class => "card-img-top", :alt => "Card image cap") %>
+<div class="card" >
   <div class="card-body">
-    <h1>Courses </h1><p class="card-text"></p>
+      <h3> <%= image_tag("course.png", :size =>"30x30") %> Courses </h3>
   </div>
 </div>
-</br>
 <hr>
+
+<div id="map" style="height: 500px; margin: 2%; background: grey" > </div>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">gym</th>
+      <th scope="col">From gym</th>
       <th scope="col">Likes</th>
       <th colspan="3"></th>
     </tr>
@@ -21,7 +21,7 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= course.name %></td>
-        <td><%= course.gym %></td>
+        <td><%= course.gym.username %></td>
         <td><%= course.likes %></td>
         <td><%= link_to 'Show', course %></td>
         <% if athlete_signed_in? && !(course.already_joined(course, current_athlete)) %>
@@ -37,4 +37,58 @@
 
 <br>
 
-<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>New Course</button>".html_safe, new_course_path %>
+<script type="text/javascript">
+  // Initialize the  communication with the platform
+  var platform = new H.service.Platform({
+    'app_id': 'A3k50ziCbuDE8NVHU1lr',
+    'app_code': 'PfpBfdphIFeJ0zMC2cq1Pw'
+  });
+  var pixelRatio = window.devicePixelRatio || 1;
+  var defaultLayers = platform.createDefaultLayers({
+    tileSize: pixelRatio === 1 ? 256 : 512,
+    ppi: pixelRatio === 1 ? undefined : 320
+  });
+
+  //Initialize map
+  var map = new H.Map(document.getElementById('map'),
+    defaultLayers.normal.map, {
+      pixelRatio: pixelRatio,
+      zoom: 12,
+      center: { lat: 41.90, lng: 12.5 }
+    });
+
+  //for interactions and UI components
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  //add markers
+  var gyms = <%=raw @gyms.to_json %>;
+  var courses = <%=raw @courses.to_json %>;
+  gyms.forEach(function(gym) {
+
+    var marker = new H.map.Marker({
+      lat: gym.latitude, lng: gym.longitude});
+
+    var data = [];
+    //to find course gym
+    for (var i = 0; i < courses.length; i++){
+      // look for the entry with a matching `code` value
+      if (courses[i].gym_id == gym.id){
+        data.push('<div ><a href="/courses/' + courses[i].id + '">' + courses[i].name + '</a>' + '</div> ')
+      }
+    }
+
+    // Add the marker to the map with bubble
+    marker.setData(data.join(' '));
+    marker.addEventListener('tap', function (evt) {
+      var bubble = new H.ui.InfoBubble(evt.target.getPosition(), {
+        // read custom data
+        content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+    }, false);
+    if (data.length > 0)
+      map.addObject(marker);
+  });
+</script>

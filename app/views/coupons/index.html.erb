@@ -1,18 +1,17 @@
-<p id="notice"><%= notice %></p>
-<div class="card" style="width: 18rem;">
-  <%= image_tag("coupon.png", :class => "card-img-top", :alt => "Card image cap") %>
+<div class="card" >
   <div class="card-body">
-    <h1>Coupon</h1><p class="card-text"></p>
+      <h3> <%= image_tag("coupon.png", :size =>"30x30") %> Coupons </h3>
   </div>
 </div>
-</br>
 <hr>
+
+<div id="map" style="height: 500px; margin: 2%; background: grey" > </div>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Code</th>
-      <th scope="col">gym</th>
+      <th scope="col">Name</th>
+      <th scope="col">From gym</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,8 +19,8 @@
   <tbody>
     <% @coupons.each do |coupon| %>
       <tr>
-        <td><%= coupon.code %></td>
-        <td><%= coupon.gym %></td>
+        <td><%= coupon.name %></td>
+        <td><%= coupon.gym.username %></td>
         <td><%= link_to 'Show', coupon %></td>
         <% if athlete_signed_in? && !(coupon.already_joined(coupon, current_athlete))%>
             <td><%= link_to "join", coupons_join_path(:id => coupon.id), method: :put %></td>
@@ -37,4 +36,58 @@
 
 <br>
 
-<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>New Coupon</button>".html_safe, new_coupon_path %>
+<script type="text/javascript">
+  // Initialize the  communication with the platform
+  var platform = new H.service.Platform({
+    'app_id': 'A3k50ziCbuDE8NVHU1lr',
+    'app_code': 'PfpBfdphIFeJ0zMC2cq1Pw'
+  });
+  var pixelRatio = window.devicePixelRatio || 1;
+  var defaultLayers = platform.createDefaultLayers({
+    tileSize: pixelRatio === 1 ? 256 : 512,
+    ppi: pixelRatio === 1 ? undefined : 320
+  });
+
+  //Initialize map
+  var map = new H.Map(document.getElementById('map'),
+    defaultLayers.normal.map, {
+      pixelRatio: pixelRatio,
+      zoom: 12,
+      center: { lat: 41.90, lng: 12.5 }
+    });
+
+  //for interactions and UI components
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  //add markers
+  var gyms = <%=raw @gyms.to_json %>;
+  var coupons = <%=raw @coupons.to_json %>;
+  gyms.forEach(function(gym) {
+
+    var marker = new H.map.Marker({
+      lat: gym.latitude, lng: gym.longitude});
+
+    var data = [];
+    //to find course gym
+    for (var i = 0; i < coupons.length; i++){
+      // look for the entry with a matching `code` value
+      if (coupons[i].gym_id == gym.id){
+        data.push('<div ><a href="/courses/' + coupons[i].id + '">' + coupons[i].name + '</a>' + '</div> ')
+      }
+    }
+
+    // Add the marker to the map with bubble
+    marker.setData(data.join(' '));
+    marker.addEventListener('tap', function (evt) {
+      var bubble = new H.ui.InfoBubble(evt.target.getPosition(), {
+        // read custom data
+        content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+    }, false);
+    if (data.length > 0)
+      map.addObject(marker);
+  });
+</script>

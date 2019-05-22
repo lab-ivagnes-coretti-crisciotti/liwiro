@@ -1,17 +1,17 @@
-<div class="card" style="width: 18rem;">
-  <%= image_tag("peso.png", :class => "card-img-top", :alt => "Card image cap") %>
+<div class="card" >
   <div class="card-body">
-    <h1>Gyms </h1><p class="card-text"></p>
+      <h3> <%= image_tag("peso.png", :size =>"30x30") %> Gyms </h3>
   </div>
 </div>
-</br>
 <hr>
+
+<div id="map" style="height: 500px; margin: 2%; background: grey" > </div>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Email</th>
-      <th scope="col">name</th>
+      <th scope="col">Name</th>
+      <th scope="col">address</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,8 +19,9 @@
   <tbody>
     <% @gyms.each do |gym| %>
       <tr>
-        <td><%= gym.email %></td>
-        <td><%= gym.likes %></td>
+        <td><%= gym.username %></td>
+        <td><%= gym.address %></td>
+
         <td><%= link_to 'Show', gym %></td>
         <% if athlete_signed_in? && !(gym.already_joined(gym, current_athlete)) %>
             <td><%= link_to "join", gyms_join_path(:id => gym.id), method: :put %></td>
@@ -34,3 +35,48 @@
 </table>
 
 <br>
+
+<script type="text/javascript">
+  // Initialize the  communication with the platform
+  var platform = new H.service.Platform({
+    'app_id': 'A3k50ziCbuDE8NVHU1lr',
+    'app_code': 'PfpBfdphIFeJ0zMC2cq1Pw'
+  });
+  var pixelRatio = window.devicePixelRatio || 1;
+  var defaultLayers = platform.createDefaultLayers({
+    tileSize: pixelRatio === 1 ? 256 : 512,
+    ppi: pixelRatio === 1 ? undefined : 320
+  });
+
+  //Initialize map
+  var map = new H.Map(document.getElementById('map'),
+    defaultLayers.normal.map, {
+      pixelRatio: pixelRatio,
+      zoom: 12,
+      center: { lat: 41.90, lng: 12.5 }
+    });
+
+  //for interactions and UI components
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  //add markers
+  var gyms = <%=raw @gyms.to_json %>;
+  gyms.forEach(function(gym) {
+    var marker = new H.map.Marker({
+      lat: gym.latitude, lng: gym.longitude});
+
+      // Add the marker to the map with bubble
+    marker.setData('<div ><a href="/gyms/'+ gym.id + '">' + gym.username + '</a> ' + 
+    gym.address + '</div>');
+    marker.addEventListener('tap', function (evt) {
+      var bubble = new H.ui.InfoBubble(evt.target.getPosition(), {
+        // read custom data
+        content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+    }, false);
+    map.addObject(marker);
+  });
+</script>
