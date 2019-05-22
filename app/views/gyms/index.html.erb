@@ -61,13 +61,13 @@
   var ui = H.ui.UI.createDefault(map, defaultLayers);
 
   //add markers
-  var gyms = <%=raw @gyms.to_json %>;
+  var gyms = <%= raw @gyms.to_json %>;
   gyms.forEach(function(gym) {
     var marker = new H.map.Marker({
       lat: gym.latitude, lng: gym.longitude});
 
       // Add the marker to the map with bubble
-    marker.setData('<div ><a href="/gyms/'+ gym.id + '">' + gym.username + '</a> ' + 
+    marker.setData('<div ><a href="/gyms/'+ gym.id + '">' + gym.username + '</a> ' +
     gym.address + '</div>');
     marker.addEventListener('tap', function (evt) {
       var bubble = new H.ui.InfoBubble(evt.target.getPosition(), {

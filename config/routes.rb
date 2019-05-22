@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   #gym routes
   get '/gym/home', to: 'gym#home'
+  get '/gym/address', to: 'gym#address'
+  post '/gym/address', to: 'gym#change_address'
   get '/gym/profile', to: 'gym#profile'
   get '/gym/my_courses', to: 'gym#my_courses'
   get '/gym/my_coupons', to: 'gym#my_coupons'

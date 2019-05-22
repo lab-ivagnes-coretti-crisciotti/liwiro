@@ -1,0 +1,14 @@
+<h3> change address </h3>
+
+<%= form_with(model: @gym, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Change my address" %>
+  </div>
+  
+<% end %>

@@ -1,4 +1,11 @@
 <!-- gym Home -->
+<% if current_gym.address.nil? %>
+  <div class="alert alert-danger" role="alert">
+  <%= image_tag("danger.png", :size =>"20x20" ) %> &nbsp; Take care, you don't have an address,
+   click <%= link_to 'here', gym_address_path %> to add it or you won't be showed on the map
+  </div>
+<% end %>
+
 <%= render 'layouts/carousel' %>
 
 <div class="row" style="text-align: center;">

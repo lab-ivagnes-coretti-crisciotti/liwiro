@@ -44,6 +44,8 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'autoprefixer-rails', '~> 9.1.0'
 gem 'jquery-rails'
 
+gem 'rest-client'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
