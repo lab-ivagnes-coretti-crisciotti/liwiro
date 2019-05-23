@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Gyms::SessionsController < Devise::SessionsController
+  before_action :check
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,6 +25,13 @@ class Gyms::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     gym_home_path
   end
+
+  def check
+  if (athlete_signed_in?)
+    flash[:notice] = "You are already signed in"
+    redirect_to(athlete_home_path) && return
+  end
+end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

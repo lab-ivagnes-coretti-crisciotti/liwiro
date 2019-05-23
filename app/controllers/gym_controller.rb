@@ -14,11 +14,11 @@ class GymController < ApplicationController
     @gym = current_gym
     result = RestClient::Request.execute(
       method: :get,
-      url: 'https://geocoder.api.here.com/6.2/geocode.json?searchtext=' + params["address"] + '&app_id=A3k50ziCbuDE8NVHU1lr&app_code=PfpBfdphIFeJ0zMC2cq1Pw'
+      url: 'https://geocoder.api.here.com/6.2/geocode.json?searchtext=' + add_params["address"] + '&app_id=A3k50ziCbuDE8NVHU1lr&app_code=PfpBfdphIFeJ0zMC2cq1Pw'
     )
     data = JSON.parse(result, symbolize_keys: true)
     coordinates = data["Response"]["View"][0]["Result"][0]["Location"]["DisplayPosition"]
-    @gym.address = params["address"]
+    @gym.address = add_params["address"]
     @gym.latitude = coordinates["Latitude"]
     @gym.longitude = coordinates["Longitude"]
     respond_to do |format|
@@ -44,10 +44,10 @@ class GymController < ApplicationController
     @worksheets = current_gym.worksheets
   end
 
-  private
+  protected
   # Never trust parameters from the scary internet, only allow the white list through.
   def add_params
-    params.require(:gym).permit(:address)
+    params.permit(:address)
   end
 
 end

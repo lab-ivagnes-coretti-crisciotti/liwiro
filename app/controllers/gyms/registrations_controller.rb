@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Gyms::RegistrationsController < Devise::RegistrationsController
+  before_action :check
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -58,6 +59,13 @@ class Gyms::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     gym_home_path
   end
+
+  def check
+  if (athlete_signed_in?)
+    flash[:notice] = "You are already signed in"
+    redirect_to(athlete_home_path) && return
+  end
+end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
