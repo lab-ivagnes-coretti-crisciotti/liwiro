@@ -1,29 +1,30 @@
-<h1>Course comments</h1>
-<h4><i><small class="text-muted">Leave a comment too</small></i></h4>
-<br>
+<div>
 
-<table class="table">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Gym</th>
-        <th scope="col">Likes</th>
-      </tr>
-    </thead>
-<tbody>
-<tr>
-  <td>
-    <%= @course.name %>
-  </td>
-  <td>
-    <%= @course.gym.username %>
-  </td>
-  <td>
-    <%= @course.likes %>
-  </td>
-</tbody>
-</table>
+  <div class="card one" style="width: 18rem;">
+    <%= image_tag("palestra.jpg", :class => "card-img-top", :alt => "Card image cap") %>
+    <div class="card-body">
+      <h1><%= @course.name %></h1>
+      <p class="card-text"><br>From gym: <i>
+        <%= link_to "#{@course.gym.username}", gym_path(@course.gym.id) %></i></p>
+      <p class="card-text"><br>Price: <i><%= @course.price %></i></p>
+    </div>
+  </div>
+
+  <div class="card two">
+    <div id="map"  style="height: 360px; margin: 2%; background: grey" > </div>
+  </div>
+
+</div>
+
+</br>
+
+<div class="card">
+  <div class="card-body">
+<p class="card-text"><br>Course description: <i><%= @course.description %></i></p>
+  </div>
+</div>
+
+</br>
 
 <div class="card">
   <div class="card-body">
@@ -58,3 +59,40 @@
 <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, courses_path%>
 
 <br><br>
+
+
+<script type="text/javascript">
+  // Initialize the  communication with the platform
+  var platform = new H.service.Platform({
+    'app_id': 'A3k50ziCbuDE8NVHU1lr',
+    'app_code': 'PfpBfdphIFeJ0zMC2cq1Pw'
+  });
+  var pixelRatio = window.devicePixelRatio || 1;
+  var defaultLayers = platform.createDefaultLayers({
+    tileSize: pixelRatio === 1 ? 256 : 512,
+    ppi: pixelRatio === 1 ? undefined : 320
+  });
+
+  //Initialize map
+  var map = new H.Map(document.getElementById('map'),
+    defaultLayers.normal.map, {
+      pixelRatio: pixelRatio,
+      zoom: 12,
+      center: { lat: 41.90, lng: 12.5 }
+    });
+
+  //for interactions and UI components
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  //add markers
+  var lati = <%= @course.gym.latitude %>;
+  var lngi = <%= @course.gym.longitude %>;
+
+  var marker = new H.map.Marker({
+    lat: lati, lng: lngi});
+
+  map.addObject(marker);
+  map.setCenter({lat:lati, lng:lngi});
+
+</script>

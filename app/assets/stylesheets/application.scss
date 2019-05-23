@@ -1,8 +1,18 @@
  @import "bootstrap";
- 
- textarea {
 
+ textarea {
    height: 70px;
    width: 1000px;
-
  }
+
+ .container {
+    height: 100%;
+}
+
+.one {
+    width: 20rem;
+    float: left;
+}
+.two {
+    margin-left: 21rem;
+}

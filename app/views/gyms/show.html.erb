@@ -1,9 +1,21 @@
-<div class="card" style="width: 18rem;">
-  <%= image_tag("palestra.jpg", :class => "card-img-top", :alt => "Card image cap") %>
-  <div class="card-body">
-    <h1><%= @gym.username %></h1><p class="card-text"><br><i><%= @gym.email %></i></p>
+<div>
+
+  <div class="card one" style="width: 18rem;">
+    <%= image_tag("palestra.jpg", :class => "card-img-top", :alt => "Card image cap") %>
+    <div class="card-body">
+      <h1><%= @gym.username %></h1>
+      <p class="card-text"><br>Email: <i><%= @gym.email %></i></p>
+      <p class="card-text"><br>Address: <i><%= @gym.address %></i></p>
+      <p class="card-text"><br>Price: <i><%= @gym.price %></i></p>
+    </div>
   </div>
+
+  <div class="card two">
+    <div id="map"  style="height: 430px; margin: 2%; background: grey" > </div>
+  </div>
+
 </div>
+
 </br>
 
 <div class="card">
@@ -38,3 +50,40 @@
   <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
 
 <% end %>
+
+
+<script type="text/javascript">
+  // Initialize the  communication with the platform
+  var platform = new H.service.Platform({
+    'app_id': 'A3k50ziCbuDE8NVHU1lr',
+    'app_code': 'PfpBfdphIFeJ0zMC2cq1Pw'
+  });
+  var pixelRatio = window.devicePixelRatio || 1;
+  var defaultLayers = platform.createDefaultLayers({
+    tileSize: pixelRatio === 1 ? 256 : 512,
+    ppi: pixelRatio === 1 ? undefined : 320
+  });
+
+  //Initialize map
+  var map = new H.Map(document.getElementById('map'),
+    defaultLayers.normal.map, {
+      pixelRatio: pixelRatio,
+      zoom: 12,
+      center: { lat: 41.90, lng: 12.5 }
+    });
+
+  //for interactions and UI components
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  //add markers
+  var lati = <%= @gym.latitude %>;
+  var lngi = <%= @gym.longitude %>;
+
+  var marker = new H.map.Marker({
+    lat: lati, lng: lngi});
+
+  map.addObject(marker);
+  map.setCenter({lat:lati, lng:lngi});
+
+</script>
