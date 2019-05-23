@@ -11,9 +11,8 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">gym</th>
+      <th scope="col">Gym</th>
       <th scope="col">Likes</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -21,7 +20,7 @@
     <%  (@courses || []).each do |course| %>
       <tr>
         <td><%= course.name %></td>
-        <td><%= course.gym %></td>
+        <td><%= course.gym.username %></td>
         <td><%= course.likes %></td>
         <td><%= link_to 'Show', course %></td>
         <% if athlete_signed_in? %>

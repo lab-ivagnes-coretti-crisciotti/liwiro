@@ -1,22 +1,40 @@
 <div class="card" style="width: 18rem;">
   <%= image_tag("palestra.jpg", :class => "card-img-top", :alt => "Card image cap") %>
   <div class="card-body">
-    <h1>Gym:</h1><p class="card-text"><%= @gym.email %></p>
+    <h1><%= @gym.username %></h1><p class="card-text"><br><i><%= @gym.email %></i></p>
   </div>
 </div>
 </br>
 
-<strong>comments:</strong>
-<tbody>
-<% @gym.gym_reviews.each do |comment| %>
-  <tr>
-    <td><%= comment.text %></td>
-  </tr>
+<div class="card">
+  <div class="card-body">
+    <div class="media">
+      <%= image_tag("comments.png", :size =>"20x20") %>
+      <div class="media-body">
+        <h5 class="mt-0">Comments</h5>
+        <hr>
+        <% @gym.gym_reviews.each do |comment| %>
+
+        <div class="card w-50 border-primary">
+          <div class="card-body">
+            <p class="card-text"><%= comment.text %></p>
+          </div>
+        </div>
+        <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<% if athlete_signed_in? %>
+
+  <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Vote</button>".html_safe, new_gym_review_path(gym: @gym.id)%>
+
 <% end %>
-</tbody></br></br>
 <% if athlete_signed_in? %>
-<td><%= link_to "Vote", new_gym_review_path(gym: @gym.id)%></td>
-<% end %></br></br>
-<% if athlete_signed_in? %>
-<td><%= link_to "Require Worksheet", new_worksheet_path(gym: @gym.id)%></td>
-<% end %></br>
+
+  <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
+
+<% end %>

@@ -1,19 +1,25 @@
-<p id="notice"><%= notice %></p>
+<br>
+<h1>Your Worksheet</h1>
 
-<p>
-  <strong>Comments:</strong>
-  <%= @worksheet.comments %>
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Comments</th>
+      <th scope="col">Athlete</th>
+      <th scope="col">Gym</th>
 
-<p>
-  <strong>athlete:</strong>
-  <%= @worksheet.athlete %>
-</p>
+    </tr>
+  </thead>
 
-<p>
-  <strong>gym:</strong>
-  <%= @worksheet.gym %>
-</p>
+  <tbody>
+      <tr>
+        <td><%= @worksheet.comments %></td>
+        <td><%= @worksheet.athlete.username %></td>
+        <td><%= @worksheet.gym.username %></td>
+      </tr>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_worksheet_path(@worksheet) %> |
-<%= link_to 'Back', worksheets_path %>
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_worksheet_path(@worksheet)%>
+
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, worksheets_path %>

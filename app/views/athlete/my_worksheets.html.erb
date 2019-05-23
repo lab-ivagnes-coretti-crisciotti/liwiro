@@ -21,7 +21,7 @@
     <% (@worksheets).each do |worksheet| %>
       <tr>
         <td><%= worksheet.comments %></td>
-        <td><%= worksheet.athlete %></td>
+        <td><%= worksheet.athlete.username %></td>
         <td><%= link_to 'Show', worksheet %></td>
         <td><%= link_to 'Destroy', worksheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

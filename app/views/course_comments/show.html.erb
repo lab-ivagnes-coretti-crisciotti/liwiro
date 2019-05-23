@@ -1,19 +1,24 @@
-<p id="notice"><%= notice %></p>
+<br>
+<h1>Your course comment</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Text</th>
+      <th scope="col">Athlete</th>
+      <th scope="col">Course</th>
 
-<p>
-  <strong>Text:</strong>
-  <%= @course_comment.text %>
-</p>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Athlete:</strong>
-  <%= @course_comment.athlete %>
-</p>
+  <tbody>
+      <tr>
+        <td><%= @course_comment.text %></td>
+        <td><%= @course_comment.athlete.username %></td>
+        <td><%= @course_comment.course.name %></td>
+      </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Course:</strong>
-  <%= @course_comment.course %>
-</p>
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_course_comment_path(@course_comment)%>
 
-<%= link_to 'Edit', edit_course_comment_path(@course_comment) %> |
-<%= link_to 'Back', course_comments_path %>
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, course_comments_path%>

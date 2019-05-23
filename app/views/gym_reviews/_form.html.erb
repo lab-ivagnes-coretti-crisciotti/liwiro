@@ -11,11 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-    <%= form.hidden_field :gym_id, value: params[:gym] %>
-  </div>
+  <br>
+    <div class="field">
+      <div class="card">
+        <h2 class="card-title">Insert here your review</h2>
+        <div class="card-body">
+          <h4><%= form.label :text %></h4>
+          <%= form.text_area :text %>
+        </div>
+      </div>
+
+      <%= form.hidden_field :gym_id, value: params[:gym] %>
+    </div>
+
 
 
 

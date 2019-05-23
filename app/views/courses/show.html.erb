@@ -1,34 +1,60 @@
-<p id="notice"><%= notice %></p>
+<h1>Course comments</h1>
+<h4><i><small class="text-muted">Leave a comment too</small></i></h4>
+<br>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
-
-<p>
-  <strong>gym:</strong>
-  <%= @course.gym %>
-</p>
-
-<p>
-  <strong>Likes:</strong>
-  <%= @course.likes %>
-</p>
-
-
-  <strong>comments:</strong>
+<table class="table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Gym</th>
+        <th scope="col">Likes</th>
+      </tr>
+    </thead>
 <tbody>
-  <% @course.course_comments.each do |comment| %>
-    <tr>
-      <td><%= comment.text %></td>
-    </tr>
-  <% end %>
+<tr>
+  <td>
+    <%= @course.name %>
+  </td>
+  <td>
+    <%= @course.gym.username %>
+  </td>
+  <td>
+    <%= @course.likes %>
+  </td>
 </tbody>
-</br>
+</table>
+
+<div class="card">
+  <div class="card-body">
+    <div class="media">
+      <%= image_tag("comments.png", :size =>"20x20") %>
+      <div class="media-body">
+        <h5 class="mt-0">Comments</h5>
+        <hr>
+        <% @course.course_comments.each do |comment| %>
+
+        <div class="card w-50 border-primary">
+          <div class="card-body">
+            <p class="card-text"><%= comment.text %></p>
+          </div>
+        </div>
+        <br>
+
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 
 <% if athlete_signed_in? %>
-  <td><%= link_to "Take a Comment", new_course_comment_path(course: @course.id)%></td>
-<% end %></br></br>
+  <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Take a Comment</button>".html_safe, new_course_comment_path(course: @course.id)%>
+<% end %>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_course_path(@course)%>
+
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, courses_path%>
+
+<br><br>
