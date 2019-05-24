@@ -37,12 +37,12 @@ Rails.application.routes.draw do
   #gym routes
   get '/gym/home', to: 'gym#home'
   get '/gym/address', to: 'gym#address'
-  post '/gym/address', to: 'gym#change_address'
   get '/gym/profile', to: 'gym#profile'
   get '/gym/my_courses', to: 'gym#my_courses'
   get '/gym/my_coupons', to: 'gym#my_coupons'
   get '/gym/my_worksheets', to: 'gym#my_worksheets'
-
+  post '/gym/address', to: 'gym#change_address'
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

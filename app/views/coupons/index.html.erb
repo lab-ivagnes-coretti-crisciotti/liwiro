@@ -36,6 +36,11 @@
 <br>
 
 <script type="text/javascript">
+if (document.readyState=='complete'){
+  location.reload();
+}
+
+document.addEventListener('DOMContentLoaded', function(){
   // Initialize the  communication with the platform
   var platform = new H.service.Platform({
     'app_id': 'A3k50ziCbuDE8NVHU1lr',
@@ -89,4 +94,5 @@
     if (data.length > 0)
       map.addObject(marker);
   });
+});
 </script>

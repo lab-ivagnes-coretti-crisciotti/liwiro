@@ -15,6 +15,12 @@
   or click <%= link_to "here", new_gym_registration_path %>  (if you are a gym) </p>
 
 <script type="text/javascript">
+
+if (document.readyState=='complete'){
+  location.reload();
+}
+
+document.addEventListener('DOMContentLoaded', function(){
   // Initialize the  communication with the platform
   var platform = new H.service.Platform({
     'app_id': 'A3k50ziCbuDE8NVHU1lr',
@@ -57,5 +63,5 @@
     }, false);
     map.addObject(marker);
   });
-
+});
 </script>
