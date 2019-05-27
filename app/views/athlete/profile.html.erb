@@ -1,13 +1,19 @@
 <div class="card" style="width: 18rem;">
   <%= image_tag("palestra.jpg", :class => "card-img-top", :alt => "Card image cap") %>
   <div class="card-body">
-    <h1>Athlete: </h1><p class="card-text"><%= current_athlete.email %></p>
+    <h1><%= current_athlete.username %></h1>
+    <p class="card-text">Email: <i><%= current_athlete.email %> </i></p>
+    <p class="card-text">Height: <i><%= current_athlete.height %> </i></p>
+    <p class="card-text">Weight: <i><%= current_athlete.weight %> </i></p>
+    <p class="card-text">Age: <i><%= current_athlete.age %> </i></p>
   </div>
 </div>
 </br>
 <hr>
 
 <div class="text-right">
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>My gyms</button>".html_safe, athlete_my_gyms_path %>
 <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>My courses</button>".html_safe, athlete_my_courses_path %>
 <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>My coupons</button>".html_safe, athlete_my_coupons_path %>
+<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>My worksheets</button>".html_safe, athlete_my_worksheets_path %>
 </div>

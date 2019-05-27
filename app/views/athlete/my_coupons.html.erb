@@ -5,7 +5,6 @@
   </div>
 </div>
 </br>
-<hr>
 
 <table class="table">
   <thead>
@@ -22,9 +21,7 @@
         <td><%= coupon.code %></td>
         <td><%= coupon.gym.username %></td>
         <td><%= link_to 'Show', coupon %></td>
-        <% if athlete_signed_in? %>
-            <td><%= link_to "leave", coupons_leave_path(:id => coupon.id), method: :put %></td>
-        <% end %>
+        <td><%= link_to "leave", coupons_leave_path(:id => coupon.id), method: :put %></td>
       </tr>
     <% end %>
   </tbody>

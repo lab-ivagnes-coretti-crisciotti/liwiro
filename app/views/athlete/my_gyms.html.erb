@@ -5,11 +5,11 @@
   </div>
 </div>
 </br>
-<hr>
 
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Likes</th>
       <th colspan="3"></th>
@@ -19,12 +19,11 @@
   <tbody>
     <%  (@gyms || []).each do |gym| %>
       <tr>
+        <td><%= gym.username %></td>
         <td><%= gym.email %></td>
         <td><%= gym.likes %></td>
         <td><%= link_to 'Show', gym %></td>
-        <% if athlete_signed_in? %>
-            <td><%= link_to "leave", gyms_leave_path(:id => gym.id), method: :put %></td>
-        <% end %>
+        <td><%= link_to "leave", gyms_leave_path(:id => gym.id), method: :put %></td>
       </tr>
     <% end %>
   </tbody>
