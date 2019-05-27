@@ -5,6 +5,7 @@ class Course < ApplicationRecord
 
   validates :name, presence: true
   validates :gym_id, presence: true
+  #validates :price, presence: true
 
   def already_joined(course, current_athlete)
     @course = Course.where(id: course.id).first
