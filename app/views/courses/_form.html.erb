@@ -11,17 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="card">
+  <div class="card-body">
 
-  <div class="field">
-    <%= form.label :likes %>
-    <%= form.number_field :likes %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :Name %>
+        <%= form.text_field :name %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field">
+        <%= form.label :Likes %>
+        <%= form.number_field :likes %>
+      </div>
+    </div>
   </div>
-<% end %>
+  <div class="row">
+    <div class="actions">
+      <%= form.submit :class =>"btn btn-primary btn-danger navbar-btn"%>
+    </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+</div>
+<br>
