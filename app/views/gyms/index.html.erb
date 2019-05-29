@@ -23,7 +23,6 @@
             <tr>
               <td><%= gym.username %></td>
               <td><%= gym.address %></td>
-
               <td><%= link_to 'Show', gym %></td>
               <% if athlete_signed_in? && !(gym.already_joined(gym, current_athlete)) %>
                   <td><%= link_to "join", gyms_join_path(:id => gym.id), method: :put %></td>

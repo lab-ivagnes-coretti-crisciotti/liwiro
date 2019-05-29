@@ -21,12 +21,13 @@ class GymController < ApplicationController
     @gym.address = add_params["address"]
     @gym.latitude = coordinates["Latitude"]
     @gym.longitude = coordinates["Longitude"]
+
     respond_to do |format|
       if @gym.save
-        format.html { redirect_to @gym, notice: 'Address successfully updated' }
-        format.json { render :show, status: :created, location: @gym }
+        format.html { redirect_to controller: 'gym', action: 'profile', notice: 'Address successfully updated' }
+        format.json { render 'gym/profile', status: :ok, location: @gym }
       else
-        format.html { render :new }
+        format.html { render 'gym/profile' }
         format.json { render json: @gym.errors, status: :unprocessable_entity }
       end
     end

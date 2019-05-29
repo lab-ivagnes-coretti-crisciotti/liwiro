@@ -25,10 +25,10 @@
       <%= render 'layouts/messages' %>
       <%= render 'layouts/modal' %>
       <%= yield %>
+      <br><br>
     </div>
 
-    <%= render 'layouts/footer' %>
-    <%= debug(params) if Rails.env.development? %>
+  <!-- <%= render 'layouts/footer' %>-->
 
     <style>
       $('#myModal').on('shown.bs.modal', function () {

@@ -12,7 +12,7 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">From gym</th>
-      <th scope="col">Likes</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -21,7 +21,6 @@
       <tr>
         <td><%= course.name %></td>
         <td><%= course.gym.username %></td>
-        <td><%= course.likes %></td>
         <td><%= link_to 'Show', course %></td>
         <% if athlete_signed_in? && !(course.already_joined(course, current_athlete)) %>
             <td><%= link_to "join", courses_join_path(:id => course.id), method: :put %></td>

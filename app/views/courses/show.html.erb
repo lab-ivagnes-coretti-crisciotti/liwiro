@@ -21,47 +21,37 @@
 
 </br>
 
-<div class="card">
-  <div class="card-body">
-<p class="card-text"><br>Course description: <i><%= @course.description %></i></p>
-  </div>
+
+<div class="card card-body">
+    Course description: <i><%= @course.description %></i>
 </div>
 
-</br>
 
-<div class="card">
-  <div class="card-body">
-    <div class="media">
-      <%= image_tag("comments.png", :size =>"20x20") %>
-      <div class="media-body">
-        <h5 class="mt-0">Comments</h5>
-        <hr>
-        <% @course.course_comments.each do |comment| %>
 
-        <div class="card w-50 border-primary">
+
+<hr>
+  <div class="media">
+    <%= image_tag("comments.png", :size =>"20x20") %>
+    <div class="media-body">
+      <h5 class="mt-0">&nbsp; Comments </h5> <hr>
+
+      <% @course.course_comments.each do |comment| %>
+      <div class="card mb-2">
+          <div class="card-header">Posted by <i> <%= comment.athlete.username %></i> </div>
           <div class="card-body">
-            <p class="card-text"><%= comment.text %></p>
+              <%= comment.text %>
+              <footer class="blockquote-footer"><%= comment.created_at %></footer>
           </div>
-        </div>
-        <br>
-
-
-        <% end %>
       </div>
+      <% end %>
+
     </div>
   </div>
-</div>
-<br>
+<hr>
 
 <% if athlete_signed_in? %>
-  <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Take a Comment</button>".html_safe, new_course_comment_path(course: @course.id)%>
+  <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Leave a Comment</button>".html_safe, new_course_comment_path(course: @course.id)%>
 <% end %>
-
-<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_course_path(@course)%>
-
-<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, courses_path%>
-
-<br><br>
 
 
 <script type="text/javascript">

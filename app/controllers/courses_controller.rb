@@ -29,7 +29,6 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.gym = current_gym
-    @course.likes = 0
 
     respond_to do |format|
       if @course.save
@@ -104,7 +103,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :likes, :comments)
+      params.require(:course).permit(:name, :description, :price)
     end
 
     def require_same_gym

@@ -7,11 +7,12 @@
     <p class="card-text"></p>
     <p class="card-text">Email: <i><%= current_gym.email %> </i> </p>
     <p class="card-text">Address: <i><%= current_gym.address %> </i></p>
-    <p class="card-text">Price: <i><%= current_gym.price %> </i></p>
   </div>
 </div>
 </br>
+
 <hr>
+  <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>change address</button>".html_safe, gym_address_path %>
 
 <div class="text-right">
 <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#'>My courses</button>".html_safe, gym_my_courses_path %>

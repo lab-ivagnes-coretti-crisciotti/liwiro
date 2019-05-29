@@ -8,51 +8,46 @@
           <h1><%= @gym.username %></h1>
           <p class="card-text"><br>Email: <i><%= @gym.email %></i></p>
           <p class="card-text"><br>Address: <i><%= @gym.address %></i></p>
-          <p class="card-text"><br>Price: <i><%= @gym.price %></i></p>
         </div>
       </div>
 
     </div>
     <div class="col-8">
-      <div id="map"  style="height: 430px; margin: 2%; background: grey" > </div>
+      <div id="map"  style="height: 380px; margin: 2%; background: grey" > </div>
     </div>
   </div>
   </div>
 
 </br>
 
-<div class="card">
-  <div class="card-body">
-    <div class="media">
-      <%= image_tag("comments.png", :size =>"20x20") %>
-      <div class="media-body">
-        <h5 class="mt-0">Comments</h5>
-        <hr>
-        <% @gym.gym_reviews.each do |comment| %>
 
-        <div class="card w-50 border-primary">
+<hr>
+  <div class="media">
+    <%= image_tag("comments.png", :size =>"20x20") %>
+    <div class="media-body">
+      <h5 class="mt-0">&nbsp; Reviews </h5> <hr>
+
+      <% @gym.gym_reviews.each do |review| %>
+      <div class="card mb-2">
+        <div class="card-header">Posted by <i> <%= review.athlete.username %></i> </div>
           <div class="card-body">
-            <p class="card-text"><%= comment.text %></p>
+            <%= review.text %>
+          <footer class="blockquote-footer"><%= review.created_at %></footer>
           </div>
-        </div>
-        <br>
-        <% end %>
       </div>
+      <% end %>
+      
     </div>
   </div>
-</div>
+<hr>
+
+<% if athlete_signed_in? %>
+  <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Vote</button>".html_safe, new_gym_review_path(gym: @gym.id)%>
+  <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
+<% end %>
 <br>
 
-<% if athlete_signed_in? %>
 
-  <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Vote</button>".html_safe, new_gym_review_path(gym: @gym.id)%>
-
-<% end %>
-<% if athlete_signed_in? %>
-
-  <%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
-
-<% end %>
 
 
 <script type="text/javascript">
@@ -93,5 +88,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
   map.addObject(marker);
   map.setCenter({lat:lati, lng:lngi});
+
 });
 </script>
