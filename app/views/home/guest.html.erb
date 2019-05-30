@@ -6,62 +6,28 @@
 </div>
 <hr>
 
-<div id="map" style="height: 500px; margin: 2%; background: grey" > </div>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
 
-<p> Hi friend, take a fast look to the map with buildings connected with us, or use the navbar for more
-    informartion about gyms, courses and coupons.</p>
+    <h4 style="text-align:center;">
 
-<p> If you want to subscribe click <%= link_to "here", new_athlete_registration_path %> (if you are an athelte),
-  or click <%= link_to "here", new_gym_registration_path %>  (if you are a gym) </p>
+    </h4>
+    <br>
 
-<script type="text/javascript">
+    <div class="row" style="text-align: center;">
+     <div class="col-sm-4"><%= image_tag("peso.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/gyms">Gyms </a></div>
+     <div class="col-sm-4"><%= image_tag("course.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/courses">Courses </a></div>
+     <div class="col-sm-4"><%= image_tag("soldi.png", :size =>"100x100") %><br/><a class="btn btn-primary" href="/coupons">Coupons </a></div>
+    </div>
+    <br>
+    <br>
+    <br>
 
-if (document.readyState=='complete'){
-  location.reload();
-}
+  </div>
+</div>
 
-document.addEventListener('DOMContentLoaded', function(){
-  // Initialize the  communication with the platform
-  var platform = new H.service.Platform({
-    'app_id': 'A3k50ziCbuDE8NVHU1lr',
-    'app_code': 'PfpBfdphIFeJ0zMC2cq1Pw'
-  });
-  var pixelRatio = window.devicePixelRatio || 1;
-  var defaultLayers = platform.createDefaultLayers({
-    tileSize: pixelRatio === 1 ? 256 : 512,
-    ppi: pixelRatio === 1 ? undefined : 320
-  });
+<p> Hi friend, Liwiro is an application to easy search and join gyms or courses around.<br>
+      Discover new Coupon and <strong>TAKE THEM</strong>. They are waiting to be used.
 
-  //Initialize map
-  var map = new H.Map(document.getElementById('map'),
-    defaultLayers.normal.map, {
-      pixelRatio: pixelRatio,
-      zoom: 12,
-      center: { lat: 41.90, lng: 12.5 }
-    });
-
-  //for interactions and UI components
-  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-  var ui = H.ui.UI.createDefault(map, defaultLayers);
-
-  //add markers
-  var gyms = <%=raw @gyms.to_json %>;
-  gyms.forEach(function(gym) {
-    var marker = new H.map.Marker({
-      lat: gym.latitude, lng: gym.longitude});
-
-      // Add the marker to the map with bubble
-    marker.setData('<div ><a href="/gyms/'+ gym.id + '">' + gym.username + '</a> ' +
-    gym.address + '</div>');
-    marker.addEventListener('tap', function (evt) {
-      var bubble = new H.ui.InfoBubble(evt.target.getPosition(), {
-        // read custom data
-        content: evt.target.getData()
-    });
-    // show info bubble
-    ui.addBubble(bubble);
-    }, false);
-    map.addObject(marker);
-  });
-});
-</script>
+<p> If you are an ATHLETE click <%= link_to "here", new_athlete_registration_path %> to subscribe.</p>
+<p> If you are a GYM click <%= link_to "here", new_gym_registration_path %>.</p>
