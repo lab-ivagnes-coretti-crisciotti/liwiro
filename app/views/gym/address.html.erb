@@ -1,14 +1,18 @@
-<h3> change address </h3>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <h3 class="card-title"> Change address  </h3>
 
-<%= form_with(model: @gym, local: true) do |form| %>
+    <%= form_with(model: @gym, local: true) do |form| %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+      <div class="field">
+        <%= form.label :address %>
+        <%= form.text_field :address , :class =>"form-control"%>
+      </div><br>
+
+      <div class="actions">
+        <%= form.submit "Change my address", :class=>"btn btn-primary" %>
+      </div>
+
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Change my address" %>
-  </div>
-  
-<% end %>
+</div>

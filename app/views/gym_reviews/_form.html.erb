@@ -13,21 +13,19 @@
 
   <br>
     <div class="field">
-      <div class="card">
+      <div class="card shadow p-3 mb-5 bg-white rounded">
         <h2 class="card-title">Insert here your review</h2>
         <div class="card-body">
           <h4><%= form.label :text %></h4>
-          <%= form.text_area :text %>
+          <%= form.text_area :text , :class =>"form-control"%>
         </div>
       </div>
 
       <%= form.hidden_field :gym_id, value: params[:gym] %>
     </div>
 
-
-
-
   <div class="actions">
-    <%= form.submit :class =>"btn btn-primary btn-danger navbar-btn"%>
+    <%= form.submit :class =>"btn btn-primary navbar-btn"%>
   </div>
 <% end %>
+<br>

@@ -9,8 +9,8 @@
   <div class="row">
     <div class="col scroll">
 
-      <table class="table">
-        <thead>
+      <table class="table table-striped">
+        <thead class="thead-dark">
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Address</th>
@@ -23,12 +23,12 @@
             <tr>
               <td><%= gym.username %></td>
               <td><%= gym.address %></td>
-              <td><%= link_to 'Show', gym %></td>
+              <td><%= link_to 'Show', gym , :class=>"btn btn-outline-primary"%></td>
               <% if athlete_signed_in? && !(gym.already_joined(gym, current_athlete)) %>
-                  <td><%= link_to "join", gyms_join_path(:id => gym.id), method: :put %></td>
+                  <td><%= link_to "join", gyms_join_path(:id => gym.id), method: :put , :class=>"btn btn-outline-primary"%></td>
               <% end %>
               <% if athlete_signed_in? && gym.already_joined(gym, current_athlete) %>
-                  <td><%= link_to "leave", gyms_leave_path(:id => gym.id), method: :put %></td>
+                  <td><%= link_to "leave", gyms_leave_path(:id => gym.id), method: :put , :class=>"btn btn-outline-primary"%></td>
               <% end %>
             </tr>
           <% end %>
@@ -42,8 +42,6 @@
     </div>
   </div>
 </div>
-
-<br/>
 
 <script type="text/javascript">
 if (document.readyState=='complete'){

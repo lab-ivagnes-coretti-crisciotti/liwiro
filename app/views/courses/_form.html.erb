@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="card">
+  <div class="card shadow p-3 mb-5 bg-white rounded">
   <div class="card-body">
 
 
@@ -20,17 +20,17 @@
     <div class="col">
       <div class="field">
         <%= form.label :Name %>
-        <%= form.text_field :name %>
+        <%= form.text_field :name , :class=>"form-control"%>
       </div>
 
       <div class="field">
         <%= form.label :description %>
-        <%= form.text_field :description %>
+        <%= form.text_field :description , :class=>"form-control" %>
       </div>
 
       <div class="field">
         <%= form.label :price %>
-        <%= form.number_field :price %>
+        <%= form.number_field :price , :class=>"form-control"%>
       </div>
 
     </div>
@@ -38,11 +38,11 @@
   </div>
   <div class="row">
     <div class="actions">
-      <%= form.submit :class =>"btn btn-primary btn-danger navbar-btn"%>
+      <br>
+      <%= form.submit :class =>"btn btn-primary navbar-btn"%>
     </div>
     <% end %>
   </div>
   </div>
 </div>
 </div>
-<br>

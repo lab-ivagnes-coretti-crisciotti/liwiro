@@ -2,5 +2,5 @@
 
 <%= render 'form', gym_review: @gym_review %>
 
-<%= link_to 'Show', @gym_review %> |
-<%= link_to 'Back', gym_reviews_path %>
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Show</button>".html_safe, @gym_review %>
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, gym_reviews_path %>

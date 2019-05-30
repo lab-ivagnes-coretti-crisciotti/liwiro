@@ -1,7 +1,7 @@
 <br>
 <h1>Your Review</h1>
-<table class="table">
-  <thead>
+<table class="table table-striped">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Text</th>
       <th scope="col">Athlete</th>
@@ -19,6 +19,6 @@
   </tbody>
 </table>
 
-<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_gym_review_path(@gym_review)%>
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_gym_review_path(@gym_review)%>
 
-<%= link_to "<button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, gym_reviews_path%>
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, gym_reviews_path%>

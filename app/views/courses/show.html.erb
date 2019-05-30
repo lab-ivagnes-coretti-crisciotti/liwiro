@@ -20,12 +20,12 @@
   </div>
 
 <div class="card card-body">
-    Course description: <i><%= @course.description %></i>
+    <strong>Course description: </strong><i><%= @course.description %></i>
 </div>
 
 
 <hr>
-  <div class="media">
+  <div class="media shadow p-3 mb-5 bg-white rounded">
     <%= image_tag("comments.png", :size =>"20x20") %>
     <div class="media-body">
       <h5 class="mt-0">&nbsp; Comments </h5> <hr>
@@ -42,9 +42,10 @@
 
     </div>
   </div>
-<hr>
+
 
 <% if athlete_signed_in? %>
+  <hr>
   <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Leave a Comment</button>".html_safe, new_course_comment_path(course: @course.id)%>
 <% end %>
 

@@ -11,23 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
 
-  <div class="field">
-    <%= form.label :code %>
-    <%= form.text_field :code %>
-  </div>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name , :class =>"form-control"%>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %> <br/>
-    <%= form.text_area :description %>
-  </div>
+    <div class="field">
+      <%= form.label :code %>
+      <%= form.text_field :code , :class =>"form-control"%>
+    </div>
 
-  <div class="actions">
-    <%= form.submit :class =>"btn btn-primary btn-danger navbar-btn"%>
+    <div class="field">
+      <%= form.label :description %> <br/>
+      <%= form.text_area :description , :class =>"form-control"%>
+    </div>
+
+    <br>
+    <div class="actions">
+      <%= form.submit :class =>"btn btn-primary navbar-btn"%>
+    </div>
+    <% end %>
+
   </div>
-<% end %>
-<br>
+</div>

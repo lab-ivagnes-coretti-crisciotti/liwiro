@@ -6,28 +6,25 @@
 </div>
 <hr>
 
-<div class="card shadow p-3 mb-5 bg-white rounded">
-  <div class="card-body">
+  <div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
 
-    <h4 style="text-align:center;">
+      <h4 style="text-align:center;">
+        Hi friend, take a fast look to the map with buildings connected with us, or use the navbar for more
+        informartion about gyms, courses and coupons.<br>
+        If you want to subscribe click <%= link_to "here", new_athlete_registration_path %> (if you are an athelte),
+        or click <%= link_to "here", new_gym_registration_path %>  (if you are a gym)
 
-    </h4>
-    <br>
+      </h4>
+      <br>
+      <br>
+      <br>
 
-    <div class="row" style="text-align: center;">
-     <div class="col-sm-4"><%= image_tag("peso.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/gyms">Gyms </a></div>
-     <div class="col-sm-4"><%= image_tag("course.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/courses">Courses </a></div>
-     <div class="col-sm-4"><%= image_tag("soldi.png", :size =>"100x100") %><br/><a class="btn btn-primary" href="/coupons">Coupons </a></div>
+      <div class="row" style="text-align: center;">
+       <div class="col-sm-4"><%= image_tag("peso.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/gyms">Gyms </a></div>
+       <div class="col-sm-4"><%= image_tag("course.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/courses">Courses </a></div>
+       <div class="col-sm-4"><%= image_tag("soldi.png", :size =>"100x100") %><br/><a class="btn btn-primary" href="/coupons">Coupons </a></div>
+      </div>
+
     </div>
-    <br>
-    <br>
-    <br>
-
   </div>
-</div>
-
-<p> Hi friend, Liwiro is an application to easy search and join gyms or courses around.<br>
-      Discover new Coupon and <strong>TAKE THEM</strong>. They are waiting to be used.
-
-<p> If you are an ATHLETE click <%= link_to "here", new_athlete_registration_path %> to subscribe.</p>
-<p> If you are a GYM click <%= link_to "here", new_gym_registration_path %>.</p>

@@ -6,8 +6,8 @@
 </div>
 </br>
 
-<table class="table">
-  <thead>
+<table class="table table-striped">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Code</th>
@@ -20,9 +20,9 @@
       <tr>
         <td><%= coupon.name %></td>
         <td><%= coupon.code %></td>
-        <td><%= link_to 'Show', coupon %></td>
-        <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
-        <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', coupon , :class=>"btn btn-outline-primary"%></td>
+        <td><%= link_to 'Edit', edit_coupon_path(coupon) , :class=>"btn btn-outline-primary"%></td>
+        <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-outline-primary"%></td>
       </tr>
     <% end %>
   </tbody>

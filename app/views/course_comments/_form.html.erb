@@ -13,17 +13,16 @@
 
   <br>
       <div class="field">
-        <div class="card">
+        <div class="card shadow p-3 mb-5 bg-white rounded">
           <h2 class="card-title">Your course comment</h2>
           <div class="card-body">
             <h4><%= form.label :text %></h4>
-            <%= form.text_area :text %>
+            <%= form.text_area :text , :class =>"form-control"%>
           </div>
         </div>
 
         <%= form.hidden_field :course_id, value: params[:course] %>
       </div>
-
 
 
   <div class="actions">

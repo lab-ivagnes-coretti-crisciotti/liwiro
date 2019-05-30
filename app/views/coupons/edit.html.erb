@@ -2,5 +2,5 @@
 
 <%= render 'form', coupon: @coupon %>
 
-<%= link_to 'Show', @coupon %> |
-<%= link_to 'Back', coupons_path %>
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Show</button>".html_safe, @coupon %>
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, coupons_path %>

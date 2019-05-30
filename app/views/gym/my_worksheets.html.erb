@@ -6,12 +6,12 @@
 </div>
 </br>
 
-<div class="card">
+<div class="card shadow p-3 mb-5 bg-white rounded">
   <div class="card-body">
     <h3 class="card-title">To do</h3>
 
-    <table class="table">
-      <thead>
+    <table class="table table-striped">
+      <thead class="thead-dark">
         <tr>
           <th scope="col">Athlete</th>
           <th colspan="3"></th>
@@ -22,8 +22,8 @@
         <% (@worksheets).each do |worksheet| %>
           <tr>
             <td><%= worksheet.athlete.username %></td>
-            <td><%= link_to 'Show', worksheet %></td>
-            <td><%= link_to 'Edit', edit_worksheet_path(worksheet) %></td>
+            <td><%= link_to 'Show', worksheet , :class=>"btn btn-outline-primary"%></td>
+            <td><%= link_to 'Edit', edit_worksheet_path(worksheet) , :class=>"btn btn-outline-primary"%></td>
           </tr>
         <% end %>
       </tbody>
@@ -33,12 +33,12 @@
 </div>
 <br>
 
-<div class="card">
+<div class="card shadow p-3 mb-5 bg-white rounded">
   <div class="card-body">
     <h3 class="card-title">Completed</h3>
 
-    <table class="table">
-      <thead>
+    <table class="table table-striped">
+      <thead class="thead-dark">
         <tr>
           <th scope="col">Athlete</th>
           <th colspan="3"></th>
@@ -49,8 +49,8 @@
         <% (@worksheets).each do |worksheet| %>
           <tr>
             <td><%= worksheet.athlete.username %></td>
-            <td><%= link_to 'Show', worksheet %></td>
-            <td><%= link_to 'Edit', edit_worksheet_path(worksheet) %></td>
+            <td><%= link_to 'Show', worksheet , :class=>"btn btn-outline-primary"%></td>
+            <td><%= link_to 'Edit', edit_worksheet_path(worksheet) , :class=>"btn btn-outline-primary"%></td>
           </tr>
         <% end %>
       </tbody>
