@@ -17,41 +17,41 @@
             <% if gym_signed_in? %>
 
             <div class="container">
-      <div class="row">
+              <div class="row">
+                <div class="col">
 
-        <div class="col">
-          <div class="card" style="width: 18rem;">
-            <div class="card-header">
-              <%= form.label :exercise %>
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                      <%= form.label :exercise %>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <%= form.check_box :ex1, {}, "ex1" %>
+                        <%= "ex1".humanize %>
+                      </li>
+                      <li class="list-group-item">
+                        <%= form.check_box :ex2, {}, "ex2" %>
+                        <%= "ex2".humanize %>
+                      </li>
+                      <li class="list-group-item">
+                        <%= form.check_box :ex3, {}, "ex3" %>
+                        <%= "ex3".humanize %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <%= form.label :comments %>
+                  <%= form.text_field :comments %>
+                  <% end %>
+                  <% if athlete_signed_in? %>
+                    <%= form.hidden_field :gym_id, value: params[:gym] %>
+                  <% end %>
+                </div>
+
+              </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <%= form.check_box :ex1, {}, "ex1" %>
-                <%= "ex1".humanize %>
-              </li>
-              <li class="list-group-item">
-                <%= form.check_box :ex2, {}, "ex2" %>
-                <%= "ex2".humanize %>
-              </li>
-              <li class="list-group-item">
-                <%= form.check_box :ex3, {}, "ex3" %>
-                <%= "ex3".humanize %>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col">
-          <%= form.label :comments %>
-          <%= form.text_field :comments %>
-        <% end %>
-        <% if athlete_signed_in? %>
-          <%= form.hidden_field :gym_id, value: params[:gym] %>
-        <% end %>
-        </div>
-
-      </div>
-      </div>
 
           </div>
         </div>
@@ -59,7 +59,7 @@
       <br>
 
   <div class="actions">
-    <%= form.submit :class =>"btn btn-primary btn-danger navbar-btn" %>
+    <%= form.submit :class =>"btn btn-primary navbar-btn" %>
   </div>
   <br>
 <% end %>

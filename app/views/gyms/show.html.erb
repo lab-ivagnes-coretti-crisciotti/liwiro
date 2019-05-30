@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-4">
 
-      <div class="card one" style="width: 18rem;">
+      <div class="card one shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
         <%= image_tag("palestra.jpg", :class => "card-img-top", :alt => "Card image cap") %>
         <div class="card-body">
           <h1><%= @gym.username %></h1>
@@ -16,7 +16,7 @@
       <div id="map"  style="height: 380px; margin: 2%; background: grey" > </div>
     </div>
   </div>
-  </div>
+</div>
 
 </br>
 
@@ -36,14 +36,14 @@
           </div>
       </div>
       <% end %>
-      
+
     </div>
   </div>
 <hr>
 
-<% if athlete_signed_in? %>
-  <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Vote</button>".html_safe, new_gym_review_path(gym: @gym.id)%>
-  <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
+<% if athlete_signed_in? && @gym.already_joined(@gym, current_athlete)%>
+  <%= link_to "<button type='button' class='btn btn-primary navbar-btn'>Vote</button>".html_safe, new_gym_review_path(gym: @gym.id)%>
+  <%= link_to "<button type='button' class='btn btn-primary navbar-btn'>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
 <% end %>
 <br>
 

@@ -1,7 +1,30 @@
-<h1>Abaut page</h1>
+<div class="card" >
+  <div class="card-body">
+      <h3>About</h3>
+  </div>
+</div>
 <br>
 
-<div class="container">
-    Liwiro is an application to easy searh and join gyms or courses around<br>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+
+    <h4 style="text-align:center;">
+      Liwiro is an application to easy search and join gyms or courses around.<br>
+      Discover new Coupon and <strong>TAKE IT</strong>. They are waiting to be used.
+    </h4>
+    <br>
+
+    <div class="row" style="text-align: center;">
+     <div class="col-sm-4"><%= image_tag("peso.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/gyms">Gyms </a></div>
+     <div class="col-sm-4"><%= image_tag("course.svg", :size =>"100x100") %><br/><a class="btn btn-primary" href="/courses">Courses </a></div>
+     <div class="col-sm-4"><%= image_tag("soldi.png", :size =>"100x100") %><br/><a class="btn btn-primary" href="/coupons">Coupons </a></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <i><small class="text-muted">Version 1.0.0</small></i>
+
+  </div>
 </div>

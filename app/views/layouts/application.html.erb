@@ -11,6 +11,7 @@
     <!-- for maps -->
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet"> 
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
@@ -23,7 +24,6 @@
 
     <div class="container" >
       <%= render 'layouts/messages' %>
-      <%= render 'layouts/modal' %>
       <%= yield %>
       <br><br>
     </div>
@@ -31,11 +31,9 @@
   <!-- <%= render 'layouts/footer' %>-->
 
     <style>
-      $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-      })
 
       $('.carousel').carousel()
+
     </style>
 
   </body>
