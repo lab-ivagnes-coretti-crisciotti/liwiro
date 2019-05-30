@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <% if athlete_signed_in? %>
     <a class="navbar-brand" href="/athlete/home"><%= image_tag("logoBianco.png", :size =>"50x50" ) %></a>
   <% elsif gym_signed_in? %>
@@ -29,8 +29,8 @@
 <% if !athlete_signed_in? && !gym_signed_in? %>
   <div class="d-flex">
     <div class="btn-group">
-      <button type="button" class="btn btn-secondary" onclick="window.location.href='/athletes/sign_in'"><a> </a>Log-in Athlete</button>
-      <button type="button" class="btn btn-secondary" onclick="window.location.href='/gyms/sign_in'"><a> </a>Log-in Gym</button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='/athletes/sign_in'"><a><i class="fa fa-sign-in"></i> &nbsp; </a>Log-in Athlete</button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='/gyms/sign_in'"><a><i class="fa fa-sign-in"></i> &nbsp; </a>Log-in Gym</button>
     </div>
   </div>
 <% end %>
@@ -38,7 +38,7 @@
 <% if athlete_signed_in? %>
   <div class="d-flex">
     <div class="btn-group">
-      <button type="button" class="btn btn-secondary" onclick="window.location.href='/athlete/profile'"><a> </a>Hi <%= current_athlete.username %></button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='/athlete/profile'"><a><i class="fa fa-address-card"></i> &nbsp; </a>Hi <%= current_athlete.username %></button>
       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
       <span class="sr-only">Toggle Dropdown</span>
       </button>
@@ -49,7 +49,7 @@
         <a class="dropdown-item" href="/athlete/my_coupons">My coupons</a>
         <a class="dropdown-item" href="/athlete/my_worksheets">My worksheets</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/athletes/sign_out" data-method="delete">Logout</a>
+        <a class="dropdown-item" href="/athletes/sign_out" data-method="delete"><i class="fa fa-sign-out"></i> &nbsp; Logout</a>
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@
 <% if gym_signed_in? %>
   <div class="d-flex">
     <div class="btn-group">
-      <button type="button" class="btn btn-secondary" onclick="window.location.href='/gym/profile'"><a> </a>Hi <%= current_gym.username %></button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='/gym/profile'"><a><i class="fa fa-address-card"></i> &nbsp; </a>Hi <%= current_gym.username %></button>
       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
       <span class="sr-only">Toggle Dropdown</span>
       </button>
@@ -68,7 +68,7 @@
         <a class="dropdown-item" href="/gym/my_coupons">My coupons</a>
         <a class="dropdown-item" href="/gym/my_worksheets">My worksheets</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/gyms/sign_out" data-method="delete">Logout</a>
+        <a class="dropdown-item" href="/gyms/sign_out" data-method="delete"><i class="fa fa-sign-out"></i> &nbsp; Logout</a>
       </div>
     </div>
   </div>

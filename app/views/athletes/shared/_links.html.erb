@@ -3,9 +3,9 @@
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%- if "#{OmniAuth::Utils.camelize(provider)}" == "Facebook" %>
-      <%= link_to "<button type='button' class='btn btn-primary btn-block'>Sign in with Facebook</button>".html_safe, omniauth_authorize_path(resource_name, provider) %><br />
+      <%= link_to "<button type='button' class='btn btn-primary btn-block'><i class='fa fa-facebook'></i>  &nbsp; Sign in with Facebook</button>".html_safe, omniauth_authorize_path(resource_name, provider) %><br />
     <% elsif "#{OmniAuth::Utils.camelize(provider)}" == "GoogleOauth2" %>
-      <%= link_to "<button type='button' class='btn btn-danger btn-block'>Sign in with Google</button>".html_safe, omniauth_authorize_path(resource_name, provider) %><br />
+      <%= link_to "<button type='button' class='btn btn-danger btn-block'><i class='fa fa-google'></i>  &nbsp; Sign in with Google</button>".html_safe, omniauth_authorize_path(resource_name, provider) %><br />
     <% end %>
   <% end %>
 <% end %>
