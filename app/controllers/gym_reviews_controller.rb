@@ -16,7 +16,12 @@ class GymReviewsController < ApplicationController
 
   # GET /gym_reviews/new
   def new
-    @gym_review = GymReview.new
+    @gym_review = GymReview.where(athlete: current_athlete, gym: params[:gym]).first
+    if @gym_review != nil
+      render 'edit', :locals => { id: @gym_review.id }
+    else
+      @gym_review = GymReview.new
+    end
   end
 
   # GET /gym_reviews/1/edit
