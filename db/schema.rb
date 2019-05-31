@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_174641) do
+ActiveRecord::Schema.define(version: 2019_05_31_154520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2019_05_29_174641) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
-    t.integer "height"
-    t.integer "weight"
+    t.float "height"
+    t.float "weight"
     t.integer "age"
     t.string "provider"
     t.string "uid"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_174641) do
     t.bigint "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "stars"
     t.index ["athlete_id"], name: "index_gym_reviews_on_athlete_id"
     t.index ["gym_id"], name: "index_gym_reviews_on_gym_id"
   end
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_174641) do
     t.integer "athlete_id"
     t.integer "gym_id"
     t.text "exercises", default: [], array: true
+    t.boolean "completed"
   end
 
   add_foreign_key "athletes_coupons", "athletes"

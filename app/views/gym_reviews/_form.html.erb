@@ -14,10 +14,18 @@
   <br>
     <div class="field">
       <div class="card shadow p-3 mb-5 bg-white rounded">
-        <h2 class="card-title">Insert here your review</h2>
         <div class="card-body">
           <h4><%= form.label :text %></h4>
           <%= form.text_area :text , :class =>"form-control"%>
+        </div>
+
+        <div class="card-body">
+          <h4><%= form.label :stars %></h4>
+          <%= form.radio_button :stars, '1', :value => "1", :checked => true %> &nbsp;
+          <%= form.radio_button :stars, '2', :value => "2" %> &nbsp;
+          <%= form.radio_button :stars, '3', :value => "3" %> &nbsp;
+          <%= form.radio_button :stars, '4', :value => "4" %> &nbsp;
+          <%= form.radio_button :stars, '5', :value => "5" %> &nbsp;
         </div>
       </div>
 

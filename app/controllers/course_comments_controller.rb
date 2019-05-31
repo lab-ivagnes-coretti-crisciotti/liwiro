@@ -26,8 +26,7 @@ class CourseCommentsController < ApplicationController
   # POST /course_comments
   # POST /course_comments.json
   def create
-    @course_comment = CourseComment.new
-    @course_comment.text = params[:course_comment][:text]
+    @course_comment = CourseComment.new(course_comment_params)
     @course_comment.athlete = current_athlete
     @course_comment.course = Course.where(id: params[:course_comment][:course_id].to_i).first
 
@@ -74,7 +73,7 @@ class CourseCommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_comment_params
-      params.require(:course_comment).permit(:text, :gym_id)
+      params.require(:course_comment).permit(:text)
     end
 
     def require_same_athlete

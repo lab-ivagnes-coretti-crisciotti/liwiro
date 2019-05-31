@@ -3,22 +3,19 @@
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
+      <th scope="col">Stars</th>
       <th scope="col">Text</th>
       <th scope="col">Athlete</th>
       <th scope="col">Gym</th>
-
     </tr>
   </thead>
 
   <tbody>
       <tr>
+        <td><%= @gym_review.stars %></td>
         <td><%= @gym_review.text %></td>
         <td><%= @gym_review.athlete.username %></td>
         <td><%= @gym_review.gym.username %></td>
       </tr>
   </tbody>
 </table>
-
-<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_gym_review_path(@gym_review)%>
-
-<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Back</button>".html_safe, gym_reviews_path%>

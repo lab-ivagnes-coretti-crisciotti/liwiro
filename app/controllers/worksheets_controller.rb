@@ -26,8 +26,8 @@ class WorksheetsController < ApplicationController
 
   # POST /worksheets
   # POST /worksheets.json
-  def create 
-    @worksheet = Worksheet.new
+  def create
+    @worksheet = Worksheet.new(worksheet_params)
     @worksheet.athlete = current_athlete
     @worksheet.gym = Gym.where(id: params[:worksheet][:gym_id].to_i).first
 

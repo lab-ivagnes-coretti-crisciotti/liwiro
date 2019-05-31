@@ -19,16 +19,13 @@
   </div>
   </div>
 
-<div class="card card-body">
+  <div class="card card-body">
     <strong>Course description: </strong><i><%= @course.description %></i>
-</div>
+  </div>
 
-
-<hr>
-  <div class="media shadow p-3 mb-5 bg-white rounded">
-    <%= image_tag("comments.png", :size =>"20x20") %>
-    <div class="media-body">
-      <h5 class="mt-0">&nbsp; Comments </h5> <hr>
+<br/>
+<div class="card-body">
+  <h5 class="mt-0"> <i class="fa fa-comments"></i>&nbsp; Comments </h5> <hr>
 
       <% @course.course_comments.each do |comment| %>
       <div class="card mb-2">
@@ -40,14 +37,21 @@
       </div>
       <% end %>
 
-    </div>
-  </div>
-
-
-<% if athlete_signed_in? %>
   <hr>
-  <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Leave a Comment</button>".html_safe, new_course_comment_path(course: @course.id)%>
-<% end %>
+  <% if athlete_signed_in? && @course.already_joined(@course, current_athlete) %>
+    <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Leave a Comment</button>".html_safe, new_course_comment_path(course: @course.id)%>
+  <% end %>
+
+  <% if athlete_signed_in? && !(@course.already_joined(@course, current_athlete)) %>
+      <td><%= link_to "join", courses_join_path(:id => @course.id), method: :put , :class=>"btn btn-primary navbar-btn"%></td>
+  <% end %>
+  <% if athlete_signed_in? && @course.already_joined(@course, current_athlete) %>
+      <td><%= link_to "leave", courses_leave_path(:id => @course.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+  <% end %>
+</div>
+<br />
+
+
 
 
 <script type="text/javascript">

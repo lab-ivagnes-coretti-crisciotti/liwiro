@@ -19,30 +19,39 @@
 </div>
 
 
-<hr>
-  <div class="media">
-    <%= image_tag("comments.png", :size =>"20x20") %>
-    <div class="media-body">
-      <h5 class="mt-0">&nbsp; Reviews </h5> <hr>
+<div class="card-body">
+      <h5 class="mt-0"> <i class="fa fa-comments"></i>&nbsp; Reviews </h5> <hr>
 
       <% @gym.gym_reviews.each do |review| %>
       <div class="card mb-2">
-        <div class="card-header">Posted by <i> <%= review.athlete.username %></i> </div>
+        <div class="card-header">Posted by <i> <%= review.athlete.username %> &nbsp
+          <%= review.stars %>
+            <i class="fa fa-star"></i>
+         </div>
           <div class="card-body">
             <%= review.text %>
+
           <footer class="blockquote-footer"><%= review.created_at %></footer>
           </div>
       </div>
       <% end %>
 
-    </div>
-  </div>
-<hr>
+  <hr>
+  <% if athlete_signed_in? && @gym.already_joined(@gym, current_athlete)%>
+    <%= link_to "<button type='button' class='btn btn-primary navbar-btn'>Vote</button>".html_safe, new_gym_review_path(gym: @gym.id)%>
+    <%= link_to "<button type='button' class='btn btn-primary navbar-btn'>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
+  <% end %>
 
-<% if athlete_signed_in? && @gym.already_joined(@gym, current_athlete)%>
-  <%= link_to "<button type='button' class='btn btn-primary navbar-btn'>Vote</button>".html_safe, new_gym_review_path(gym: @gym.id)%>
-  <%= link_to "<button type='button' class='btn btn-primary navbar-btn'>Require Worksheet</button>".html_safe, new_worksheet_path(gym: @gym.id)%>
-<% end %>
+  <% if athlete_signed_in? && !(@gym.already_joined(@gym, current_athlete)) %>
+      <td><%= link_to "join", gyms_join_path(:id => @gym.id), method: :put , :class=>"btn btn-primary navbar-btn"%></td>
+  <% end %>
+  <% if athlete_signed_in? && @gym.already_joined(@gym, current_athlete) %>
+      <td><%= link_to "leave", gyms_leave_path(:id => @gym.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+  <% end %>
+</div>
+
+
+
 <br>
 
 

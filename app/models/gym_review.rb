@@ -1,7 +1,9 @@
 class GymReview < ApplicationRecord
-  belongs_to :athlete
   belongs_to :gym
+  belongs_to :athlete
 
+
+  validates :gym, presence: true
   validates :athlete, presence: true
-  validates :gym, presence: true 
+  validates :stars, numericality: { less_than_or_equal_to: 5,  only_integer: true }
 end

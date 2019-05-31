@@ -1,39 +1,37 @@
 <div class="container" style="text-align: center;">
-    <%= image_tag("Welcome.jpg", :size =>"700x300") %><br /><br />
-    <%= link_to "<button type='button' class='btn btn-primary navbar-btn'><h2>Get Starts!</h2></button>".html_safe , guest_path %>
-
-    <br /><br /><br />
-    <div class="row" style="text-align: center;">
-     <div class="col-sm-6">
-         <div class="card text-white bg-light mb-3">
-           <div class="card-body" style="border-style:solid; border-radius: 12px; border-color:#007bff; ">
-             <h3 style="color: black;">Are you an Athlete?</h3>
-             <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#exampleModal'><i class='fa fa-user-plus'></i> Sign-up</button>".html_safe, new_athlete_registration_path %>
-              <!-- <button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#athlete'>Login</button> -->
-             <br />
-           </div>
-         </div>
-     </div>
-
-     <div class="col-sm-6">
-         <div class="card text-white bg-light mb-3">
-           <div class="card-body" style="border-style:solid; border-radius: 12px; border-color:#007bff;">
-             <h3 style="color: black;">Are you a Gym?</h3>
-             <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#exampleModal'><i class='fa fa-user-plus'></i> Sign-up</button>".html_safe, new_gym_registration_path %>
-             <!-- <button type='button' class='btn btn-primary btn-danger navbar-btn' data-toggle='modal' data-target='#gym'>Login</button> -->
-             <br />
-           </div>
-         </div>
-     </div>
-    </div>
-    <br /><br /><br />
-    <hr>
-
-    <div class="row" style="text-align: center;">
-     <div class="col-sm-3"><%= image_tag("cerca.png", :size =>"100x100") %><br /><h3>Search!</h3></div>
-     <div class="col-sm-3"><%= image_tag("contatto2.png", :size =>"100x100") %><br /><h3>Partecipate!</h3></div>
-     <div class="col-sm-3"><%= image_tag("soldi.png", :size =>"100x100") %><br /><h3>Buy!</h3></div>
-     <div class="col-sm-3"><%= image_tag("like.png", :size =>"100x100") %><br /><h3>Evaluate!</h3></div>
-    </div>
-
+    <br /><%= image_tag("Welcome.jpg", :size =>"700x300") %><br /><br /><br />
+    <a class="btn btn-primary zoom" href="/guest"><h1>Get Start!</h1></a>
 </div>
+<br /><br /><br />
+
+
+<div class="row" style="text-align: center;">
+  <div class="col-sm-1"></div>
+  <div class="col-md-4">
+    <div class="card shadow p-3 mb-5 bg-white rounded zoomlogo">
+      <a href='/athletes/sign_up'><h3 style="color: black; ">Are you an Athlete?</h3></a>
+      <a href='/athletes/sign_up'> <%= image_tag("course.svg", :size =>"200x200") %></a>
+      <a class="btn btn-primary" href="/athletes/sign_up"><i class='fa fa-user-plus'></i> Sign-up</a>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+
+  <div class="col-md-4">
+    <div class="card shadow p-3 mb-5 bg-white rounded zoomlogo">
+      <a href='/gyms/sign_up'><h3 style="color: black;">Are you a Gym?</h3></a>
+      <a href='/gyms/sign_up'><%= image_tag("peso.svg", :size =>"200x200") %></a>
+      <a class="btn btn-primary" href="/gyms/sign_up"><i class='fa fa-user-plus'></i> Sign-up</a>
+    </div>
+  </div>
+</div>
+<hr>
+<br/>
+<br />
+
+<div class="row" style="text-align: center;">
+  <div class="col-sm-3"><%= image_tag("cerca.png", :size =>"100x100") %><br /><h3>Search!</h3></div>
+  <div class="col-sm-3"><%= image_tag("contatto2.png", :size =>"100x100") %><br /><h3>Partecipate!</h3></div>
+  <div class="col-sm-3"><%= image_tag("soldi.png", :size =>"100x100") %><br /><h3>Buy!</h3></div>
+  <div class="col-sm-3"><%= image_tag("like.png", :size =>"100x100") %><br /><h3>Evaluate!</h3></div>
+</div>
+<br/>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/guest', to: 'home#guest'
   get '/about', to: 'home#about'
+  get '/login', to: 'home#login'
 
   #athlete routes
   get '/athlete/home', to: 'athlete#home'
