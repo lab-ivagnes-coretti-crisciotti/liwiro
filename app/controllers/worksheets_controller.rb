@@ -45,7 +45,6 @@ class WorksheetsController < ApplicationController
   # PATCH/PUT /worksheets/1
   # PATCH/PUT /worksheets/1.json
   def update
-    @worksheet.comments = params[:worksheet][:comments]
     if params[:worksheet][:ex1] != "0" && !@worksheet.exercises.include?(params[:worksheet][:ex1])
       @worksheet.exercises.push(params[:worksheet][:ex1])
     end
@@ -85,7 +84,7 @@ class WorksheetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def worksheet_params
-      params.require(:worksheet).permit(:comments, :exercises)
+      params.require(:worksheet).permit(:comments, :completed, :exercises)
     end
 
     def require_same_user

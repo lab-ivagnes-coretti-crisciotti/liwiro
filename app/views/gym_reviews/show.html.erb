@@ -19,3 +19,6 @@
       </tr>
   </tbody>
 </table>
+
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_gym_review_path(@gym_review)%>
+<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Show gym</button>".html_safe, gym_path(@gym_review.gym)%>

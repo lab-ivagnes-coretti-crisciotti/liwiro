@@ -20,11 +20,13 @@
 
       <tbody>
         <% (@worksheets).each do |worksheet| %>
+          <% if worksheet.completed.nil? %>
           <tr>
             <td><%= worksheet.athlete.username %></td>
             <td><%= link_to 'Show', worksheet , :class=>"btn btn-outline-primary"%></td>
             <td><%= link_to 'Edit', edit_worksheet_path(worksheet) , :class=>"btn btn-outline-primary"%></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
@@ -47,11 +49,13 @@
 
       <tbody>
         <% (@worksheets).each do |worksheet| %>
+          <% if !worksheet.completed.nil? %>
           <tr>
             <td><%= worksheet.athlete.username %></td>
             <td><%= link_to 'Show', worksheet , :class=>"btn btn-outline-primary"%></td>
             <td><%= link_to 'Edit', edit_worksheet_path(worksheet) , :class=>"btn btn-outline-primary"%></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
