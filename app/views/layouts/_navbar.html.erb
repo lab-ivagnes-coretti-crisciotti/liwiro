@@ -7,6 +7,7 @@
     <a class="navbar-brand zoomlogo" href="/"><%= image_tag("logoBianco.png", :size =>"50x50" ) %></a>
   <% end %>
   &nbsp;  &nbsp;
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,6 +27,7 @@
       </li>
     </ul>
   </div>
+  &nbsp;&nbsp;
 
 <% if !athlete_signed_in? && !gym_signed_in? %>
   <a class="btn btn-secondary" href="/login"><i class="fa fa-sign-in"></i> &nbsp; Log-in</a>

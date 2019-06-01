@@ -16,7 +16,7 @@ class GymsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @gym, notice: 'Gym was successfully joined.' }
       end
-    else 
+    else
       respond_to do |format|
         format.html { redirect_to @gym, notice: 'Gym was already joined.' }
       end
