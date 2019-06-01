@@ -7,6 +7,13 @@
 
 <div class="card shadow p-3 mb-5 bg-white rounded">
   <div class="card-body">
+
+    <p style="text-align:center;"> Hi friend, Liwiro is an application to easy search and join gyms or courses around.<br>
+          Discover new Coupon and <strong>TAKE THEM</strong>. They are waiting to be used.
+
+          If you are an ATHLETE click <%= link_to "here", new_athlete_registration_path %> to subscribe.
+          If you are a GYM click <%= link_to "here", new_gym_registration_path %>.</p> <br>
+
     <div class="row" style="text-align: center;">
      <div class="col-sm-4 zoom">
        <a href="/gyms"><%= image_tag("peso.svg", :size =>"200x200") %></a><br/>
@@ -26,10 +33,3 @@
     <br>
   </div>
 </div>
-
-
-<p> Hi friend, Liwiro is an application to easy search and join gyms or courses around.<br>
-      Discover new Coupon and <strong>TAKE THEM</strong>. They are waiting to be used.
-
-<p> If you are an ATHLETE click <%= link_to "here", new_athlete_registration_path %> to subscribe.</p>
-<p> If you are a GYM click <%= link_to "here", new_gym_registration_path %>.</p>

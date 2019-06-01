@@ -6,25 +6,32 @@
 </div>
 </br>
 
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">From gym</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row scroll">
 
-  <tbody>
-    <%  (@courses || []).each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.gym.username %></td>
-        <td><%= link_to 'Show', course , :class=>"btn btn-outline-primary"%></td>
-        <td><%= link_to "leave", courses_leave_path(:id => course.id), method: :put , :class=>"btn btn-outline-primary"%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">From gym</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%  (@courses || []).each do |course| %>
+          <tr>
+            <td><%= course.name %></td>
+            <td><%= course.gym.username %></td>
+            <td><%= link_to 'Show', course , :class=>"btn btn-outline-primary"%></td>
+            <td><%= link_to "leave", courses_leave_path(:id => course.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
 
 <br>
