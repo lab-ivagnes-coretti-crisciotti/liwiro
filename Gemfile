@@ -39,7 +39,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-google-oauth2', '~> 0.6.1'
-gem 'omniauth', '~> 1.9'
 
 gem 'bootstrap', '~> 4.3.1'
 gem "font-awesome-rails"

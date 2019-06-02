@@ -29,7 +29,12 @@
 
       <% @course.course_comments.each do |comment| %>
       <div class="card mb-2">
-          <div class="card-header">Posted by <i> <%= comment.athlete.username %></i> </div>
+          <div class="card-header">Posted by <i> <%= comment.athlete.username %></i> &nbsp;
+            <% if comment.athlete == current_athlete %>
+              <%= link_to "Edit", edit_course_comment_path(comment)%> &nbsp;
+              <%= link_to "Delete", comment, method: :delete, :class=> "red"%>
+            <% end %>
+          </div>
           <div class="card-body">
               <%= comment.text %>
               <footer class="blockquote-footer"><%= comment.created_at %></footer>
