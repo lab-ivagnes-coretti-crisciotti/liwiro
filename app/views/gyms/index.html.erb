@@ -25,10 +25,10 @@
               <td><%= gym.address %></td>
               <td><%= link_to 'Show', gym , :class=>"btn btn-outline-primary"%></td>
               <% if athlete_signed_in? && !(gym.already_joined(gym, current_athlete)) %>
-                  <td><%= link_to "join", gyms_join_path(:id => gym.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+                  <td><%= link_to "Join", gyms_join_path(:id => gym.id), method: :put , :class=>"btn btn-outline-primary"%></td>
               <% end %>
               <% if athlete_signed_in? && gym.already_joined(gym, current_athlete) %>
-                  <td><%= link_to "leave", gyms_leave_path(:id => gym.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+                  <td><%= link_to "Leave", gyms_leave_path(:id => gym.id), method: :put , :class=>"btn btn-outline-primary"%></td>
               <% end %>
             </tr>
           <% end %>

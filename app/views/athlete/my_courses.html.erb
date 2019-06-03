@@ -24,7 +24,7 @@
             <td><%= course.name %></td>
             <td><%= course.gym.username %></td>
             <td><%= link_to 'Show', course , :class=>"btn btn-outline-primary"%></td>
-            <td><%= link_to "leave", courses_leave_path(:id => course.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+            <td><%= link_to "Leave", courses_leave_path(:id => course.id), method: :put , :class=>"btn btn-outline-primary"%></td>
           </tr>
         <% end %>
       </tbody>

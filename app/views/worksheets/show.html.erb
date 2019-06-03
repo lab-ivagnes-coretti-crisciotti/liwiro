@@ -1,7 +1,63 @@
 <br>
 <h1>Your Worksheet</h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col">
 
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+          <h4 class="card-title"><%= image_tag("athlete.svg", :size =>"30x30") %> Athlete</h4>
+          <strong><%= @worksheet.athlete.username %></strong>
+        </div>
+      </div>
+
+    </div>
+    <div class="col">
+
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+          <h4 class="card-title"><%= image_tag("peso.svg", :size =>"30x30") %> Gym</h4>
+          <strong><%= @worksheet.gym.username %></strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <h4 class="card-title">Exercises</h4>
+
+      <% @worksheet.exercises.each do |exercises| %>
+
+        <% if exercises != "0" %>
+
+          <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= exercises %></li>
+            </ul>
+          </div>
+
+        <% end %>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <h4 class="card-title"><i class="fa fa-comments"></i>&nbsp; Comment</h4>
+      <strong><%= @worksheet.comments %></strong>
+    </div>
+  </div>
+</div>
+<br>
 
 <% if gym_signed_in? %>
   <%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target=''>Edit</button>".html_safe, edit_worksheet_path(@worksheet)%>

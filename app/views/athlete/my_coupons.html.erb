@@ -24,7 +24,7 @@
             <td><%= coupon.code %></td>
             <td><%= coupon.gym.username %></td>
             <td><%= link_to 'Show', coupon , :class=>"btn btn-outline-primary"%></td>
-            <td><%= link_to "leave", coupons_leave_path(:id => coupon.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+            <td><%= link_to "Leave", coupons_leave_path(:id => coupon.id), method: :put , :class=>"btn btn-outline-primary"%></td>
           </tr>
         <% end %>
       </tbody>
