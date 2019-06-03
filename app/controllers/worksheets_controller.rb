@@ -30,10 +30,12 @@ class WorksheetsController < ApplicationController
     @worksheet = Worksheet.new(worksheet_params)
     @worksheet.athlete = current_athlete
     @worksheet.gym = Gym.where(id: params[:worksheet][:gym_id].to_i).first
+    @worksheet.start = Time.now
+    @worksheet.end = Time.now + 1.month
 
     respond_to do |format|
       if @worksheet.save
-        format.html { redirect_to @worksheet, notice: 'Worksheet was successfully created.' }
+        format.html { redirect_to @worksheet, notice: 'The request was successfully sent to the gym, wait until the gym complete your worksheet' }
         format.json { render :show, status: :created, location: @worksheet }
       else
         format.html { render :new }
@@ -84,7 +86,7 @@ class WorksheetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def worksheet_params
-      params.require(:worksheet).permit(:comments, :completed, :exercises)
+      params.require(:worksheet).permit(:comments, :completed, :exercises, :start, :end)
     end
 
     def require_same_user

@@ -6,29 +6,70 @@
 </div>
 </br>
 
-<div class="container">
-  <div class="row scroll">
-    
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <h3 class="card-title">Available</h3>
+
     <table class="table table-striped">
       <thead class="thead-dark">
         <tr>
           <th scope="col">From gym</th>
+          <th scope="col">Start</th>
+          <th scope="col">End</th>
           <th colspan="3"></th>
         </tr>
       </thead>
 
       <tbody>
         <% (@worksheets).each do |worksheet| %>
+          <% if !worksheet.completed.nil? %>
           <tr>
             <td><%= worksheet.gym.username %></td>
+            <td><%= worksheet.start %></td>
+            <td><%= worksheet.end %></td>
             <td><%= link_to 'Show', worksheet , :class=>"btn btn-outline-primary"%></td>
-            <td><%= link_to 'Destroy', worksheet, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-outline-primary"%></td>
+            <td><%= link_to 'Edit', edit_worksheet_path(worksheet) , :class=>"btn btn-outline-primary"%></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
 
   </div>
 </div>
+
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <h3 class="card-title">Waiting for</h3>
+
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">From gym</th>
+          <th scope="col">Start</th>
+          <th scope="col">End</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% (@worksheets).each do |worksheet| %>
+          <% if worksheet.completed.nil? %>
+          <tr>
+            <td><%= worksheet.gym.username %></td>
+            <td><%= worksheet.start %></td>
+            <td><%= worksheet.end %></td>
+            <td><%= link_to 'Show', worksheet , :class=>"btn btn-outline-primary"%></td>
+            <td><%= link_to 'Edit', edit_worksheet_path(worksheet) , :class=>"btn btn-outline-primary"%></td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+<br>
 
 <br>

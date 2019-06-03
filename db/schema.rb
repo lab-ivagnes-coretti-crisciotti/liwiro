@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_154520) do
+ActiveRecord::Schema.define(version: 2019_06_03_160515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,8 @@ ActiveRecord::Schema.define(version: 2019_05_31_154520) do
     t.integer "gym_id"
     t.text "exercises", default: [], array: true
     t.boolean "completed"
+    t.date "start"
+    t.date "end"
   end
 
   add_foreign_key "athletes_coupons", "athletes"
