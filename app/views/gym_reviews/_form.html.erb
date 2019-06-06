@@ -1,6 +1,6 @@
 <%= form_with(model: gym_review, local: true) do |form| %>
   <% if gym_review.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-danger" role="alert">
       <h2><%= pluralize(gym_review.errors.count, "error") %> prohibited this gym_review from being saved:</h2>
 
       <ul>

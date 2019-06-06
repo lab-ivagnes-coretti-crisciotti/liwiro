@@ -1,6 +1,6 @@
 <%= form_with(model: coupon, local: true) do |form| %>
   <% if coupon.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-danger" role="alert">
       <h2><%= pluralize(coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
 
       <ul>
