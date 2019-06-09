@@ -263,10 +263,11 @@ Devise.setup do |config|
 
   ### GOOGLE AUTH
   config.omniauth :google_oauth2, '626218684694-n7j0n7v7argiddnbe0q782mebnaj2hj1.apps.googleusercontent.com',
-  'AvaV5W0hO-099hFbUeV5LloT', {redirect_uri: 'http://localhost:3000/athletes/auth/google_oauth2/callback'}
+  'AvaV5W0hO-099hFbUeV5LloT', {redirect_uri: 'https://liwiro.herokuapp.com/athletes/auth/google_oauth2/callback'}
+                          ### FOR LOCALHOST CHANGE IN http://localhost:3000/athletes/auth/google_oauth2/callback
   ### FACEBOOK AUTH
   config.omniauth :facebook, '2474458045906535', 'dc0c7026b1d5633b1cc9d7daac8fce21', 
-  {redirect_uri: 'http://localhost:3000/athletes/auth/facebook/callback'}
+  {redirect_uri: '/athletes/auth/facebook/callback'}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
