@@ -1,4 +1,4 @@
-<div class="card shadow p-3 mb-5 bg-white rounded" style="width: 25rem;">
+<div id="features" class="card shadow p-3 mb-5 bg-white rounded" style="width: 25rem;">
   <%= image_tag("atleta.jpg", :class => "card-img-top", :alt => "Card image cap") %>
   <div class="card-body">
     <h1><%= current_athlete.username %></h1>
@@ -11,10 +11,10 @@
 </br>
 <hr>
 
-<div class="text-right">
-<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>change body features</button>".html_safe, athlete_settings_path %>
-<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My gyms</button>".html_safe, athlete_my_gyms_path %>
-<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My courses</button>".html_safe, athlete_my_courses_path %>
-<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My coupons</button>".html_safe, athlete_my_coupons_path %>
-<%= link_to "<button type='button' class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My worksheets</button>".html_safe, athlete_my_worksheets_path %>
+<div id="link" class="text-right">
+<%= link_to "<button type='button'  class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>Change my body features</button>".html_safe, athlete_settings_path %>
+<%= link_to "<button type='button'  class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My gyms</button>".html_safe, athlete_my_gyms_path %>
+<%= link_to "<button type='button'  class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My courses</button>".html_safe, athlete_my_courses_path %>
+<%= link_to "<button type='button'  class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My coupons</button>".html_safe, athlete_my_coupons_path %>
+<%= link_to "<button type='button'  class='btn btn-primary navbar-btn' data-toggle='modal' data-target='#'>My worksheets</button>".html_safe, athlete_my_worksheets_path %>
 </div>

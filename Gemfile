@@ -57,6 +57,8 @@ group :development, :test do
   gem 'rspec', '~> 3.8'
   gem 'database_cleaner', '~> 1.7'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
+  gem 'cucumber', '~> 3.1', '>= 3.1.2'
+  gem 'cucumber-rails', '~> 1.7', :require => false
 end
 
 group :development do

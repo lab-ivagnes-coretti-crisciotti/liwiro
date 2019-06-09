@@ -6,7 +6,7 @@ RSpec.describe Worksheet, type: :model do
       before do
         @gym = Gym.create(username: "Gym1", email: "test@test.com", password: "password", password_confirmation: "password")
         @athlete = Athlete.create(username: "Valerio", email: "test@test.com", password: "password", password_confirmation: "password")
-        @worksheet = Worksheet.create(comments: "test1", athlete_id: @athlete.id, gym_id: @gym.id)
+        @worksheet = Worksheet.create(comments: "test1", athlete_id: @athlete.id, gym_id: @gym.id, start: Time.now, end: Time.now + 1.month)
       end
       it 'should be able to be created if valid' do
         expect(@worksheet).to be_valid

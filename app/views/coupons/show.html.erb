@@ -25,6 +25,15 @@
 
 </br>
 
+  <% if athlete_signed_in? && !(@coupon.already_joined(@coupon, current_athlete)) %>
+    <td><%= link_to "Join", coupons_join_path(:id => @coupon.id), method: :put , :class=>"btn btn-primary navbar-btn"%></td>
+  <% end %>
+  <% if athlete_signed_in? && @coupon.already_joined(@coupon, current_athlete) %>
+    <td><%= link_to "Leave", coupons_leave_path(:id => @coupon.id), method: :put , :class=>"btn btn-outline-primary"%></td>
+  <% end %>
+
+</br>
+
 <script type="text/javascript">
 if (document.readyState=='complete'){
   location.reload();

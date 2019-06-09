@@ -6,7 +6,7 @@ RSpec.describe GymReview, type: :model do
       before do
         @gym = Gym.create(username: "Gym1", email: "test@test.com", password: "password", password_confirmation: "password")
         @athlete = Athlete.create(username: "Valerio", email: "test@test.com", password: "password", password_confirmation: "password")
-        @gym_review = GymReview.create(text: "test1", athlete_id: @athlete.id, gym_id: @gym.id)
+        @gym_review = GymReview.create(text: "test1", athlete_id: @athlete.id, gym_id: @gym.id, stars: 5)
       end
       it 'should be able to be created if valid' do
         expect(@gym_review).to be_valid
