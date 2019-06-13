@@ -266,7 +266,7 @@ Devise.setup do |config|
   'AvaV5W0hO-099hFbUeV5LloT', {redirect_uri: 'https://liwiro.herokuapp.com/athletes/auth/google_oauth2/callback'}
                           ### FOR LOCALHOST CHANGE IN http://localhost:3000/athletes/auth/google_oauth2/callback
   ### FACEBOOK AUTH
-  config.omniauth :facebook, '2474458045906535', 'dc0c7026b1d5633b1cc9d7daac8fce21', 
+  config.omniauth :facebook, '625312147978552', 'd8663303f1783bce64fd882ec0b0aa27', 
   {redirect_uri: 'https://liwiro.herokuapp.com/athletes/auth/facebook/callback'}
               ### FOR LOCALHOST CHANGE IN https://liwiro.herokuapp.com/athletes/auth/facebook/callback
 
