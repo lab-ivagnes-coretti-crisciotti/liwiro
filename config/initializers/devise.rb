@@ -261,13 +261,26 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  ### GOOGLE AUTH
-  config.omniauth :google_oauth2, '626218684694-n7j0n7v7argiddnbe0q782mebnaj2hj1.apps.googleusercontent.com',
-  'AvaV5W0hO-099hFbUeV5LloT', {redirect_uri: 'https://liwiro.herokuapp.com/athletes/auth/google_oauth2/callback'}
-                          ### FOR LOCALHOST CHANGE IN http://localhost:3000/athletes/auth/google_oauth2/callback
-  ### FACEBOOK AUTH
-  config.omniauth :facebook, '625312147978552', 'd8663303f1783bce64fd882ec0b0aa27', 
-  {redirect_uri: 'https://liwiro.herokuapp.com/athletes/auth/facebook/callback'}
+  if Rails.env.development?
+     #what you want in development
+     ### GOOGLE AUTH
+     config.omniauth :google_oauth2, '626218684694-n7j0n7v7argiddnbe0q782mebnaj2hj1.apps.googleusercontent.com',
+     'AvaV5W0hO-099hFbUeV5LloT', {redirect_uri: 'http://localhost:3000/athletes/auth/google_oauth2/callback'}
+                             ### FOR LOCALHOST CHANGE IN http://localhost:3000/athletes/auth/google_oauth2/callback
+     ### FACEBOOK AUTH
+     config.omniauth :facebook, '625312147978552', 'd8663303f1783bce64fd882ec0b0aa27',
+     {redirect_uri: 'http://localhost:3000/athletes/auth/facebook/callback'}
+  else
+
+    config.omniauth :google_oauth2, '626218684694-n7j0n7v7argiddnbe0q782mebnaj2hj1.apps.googleusercontent.com',
+    'AvaV5W0hO-099hFbUeV5LloT', {redirect_uri: 'https://liwiro.herokuapp.com/athletes/auth/google_oauth2/callback'}
+                            ### FOR LOCALHOST CHANGE IN http://localhost:3000/athletes/auth/google_oauth2/callback
+    ### FACEBOOK AUTH
+    config.omniauth :facebook, '625312147978552', 'd8663303f1783bce64fd882ec0b0aa27',
+    {redirect_uri: 'https://liwiro.herokuapp.com/athletes/auth/facebook/callback'}
+
+end
+
               ### FOR LOCALHOST CHANGE IN https://liwiro.herokuapp.com/athletes/auth/facebook/callback
 
   # ==> Warden configuration
